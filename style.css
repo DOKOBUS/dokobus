@@ -1,4 +1,4 @@
-.body {
+body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
   line-height: 1.6;
@@ -6,7 +6,7 @@
   color: #333;
 }
 
-.header {
+header {
   background-color: #f8f8f8;
   padding: 1rem;
   position: sticky;
@@ -15,23 +15,23 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.header h1 {
+header h1 {
   margin: 0;
 }
 
-.nav ul {
+nav ul {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 1.5rem;
 }
 
-.nav a {
+nav a {
   text-decoration: none;
   color: #333;
 }
 
-.section {
+section {
   padding: 2rem;
 }
 
