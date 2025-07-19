@@ -220,11 +220,25 @@
     font-weight: bold;
   }
 
-  .row img {
-    width: 38vw;
-    max-height: none;
-  }
+  .row {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 40s linear infinite;
+  align-items: center;
+  min-width: 200%; /* ← これが重要！ */
+  box-sizing: border-box;
 }
+
+.row img {
+  width: 15vw;
+  height: auto;
+  max-height: 30vh;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+    }
+    
   </style>
 </head>
 <body>
