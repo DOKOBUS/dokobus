@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  background: #fff;
+  color: #333;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+section {
+  padding: 2rem;
+}
+
+/* ✅ 画面下部に常に表示されるボタン */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.floating-button a {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  background-color: #006699;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.floating-button a:hover {
+  background-color: #004466;
+}
