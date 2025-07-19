@@ -178,16 +178,18 @@
     }
 
     function addImagesToTrack(track) {
-      images.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'hero-image';
-        img.style.top = `${random(5, 75)}%`;
-        img.style.left = `${random(5, 90)}%`;
-        img.style.transform += ` rotate(${random(-10, 10)}deg)`;
-        track.appendChild(img);
-      });
-    }
+  images.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'hero-image';
+    img.style.top = `${random(5, 75)}%`;
+    img.style.left = `${random(5, 90)}%`;
+    const deg = random(-10, 10);
+    img.style.setProperty('--rotate', `${deg}deg`);
+    img.style.transform = `translateY(0px) rotate(${deg}deg)`;
+    track.appendChild(img);
+  });
+}
 
     addImagesToTrack(document.getElementById('track1'));
     addImagesToTrack(document.getElementById('track2'));
