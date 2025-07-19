@@ -68,7 +68,7 @@
 
 .hero-track {
   display: flex;
-  width: calc(100% * 3); /* 3枚分なら3倍 */
+  width: calc(100% * 6); /* 3枚分なら3倍 */
   animation: slide-left 30s linear infinite;
 }
 
