@@ -172,13 +172,13 @@
 
     /* モバイル */
     @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
-    gap: 0rem;
+  .row img {
+    width: 80px;        /* ← 小さすぎず大きすぎず！ */
+    height: auto;
+    max-height: 100px;  /* ← 高さもコントロール！ */
+    object-fit: contain;
   }
+}
 
   .logo-bar {
     background-color: #fff;
@@ -237,7 +237,7 @@
   max-width: 100%;
   display: block;
 }
-    }
+    
     
   </style>
 </head>
