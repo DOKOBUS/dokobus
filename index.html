@@ -2,232 +2,119 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOKOBUS - 完全修正版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOKOBUS</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #fff;
+      font-family: sans-serif;
+      background: #eef4f8;
       overflow-x: hidden;
     }
 
     header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 10000;
+      background: white;
+      z-index: 1000;
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #333;
+    header nav {
+      display: flex;
+      gap: 40px;
       font-weight: bold;
     }
 
     .hero {
-      width: 100%;
       height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
-      background-size: 800% 800%;
-      animation: bgGradient 60s ease infinite;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 2em;
+      text-align: center;
+      color: #444;
+    }
+
+    .scroll-track {
+      position: absolute;
       display: flex;
       align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    @keyframes bgGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .hero-text {
-      position: relative;
-      color: #fff;
-      font-size: 3vw;
-      font-weight: bold;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 2;
-      white-space: nowrap;
-    }
-
-    .scroll-wrapper {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
+      gap: 4vw;
+      height: 100px;
+      left: 100%;
+      animation-name: scrollLeft;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
       z-index: 1;
     }
 
-    .hero-track {
-      width: 100%;
+    .scroll-track img {
       height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .hero-image-wrapper {
-      position: absolute;
-      z-index: 1;
-    }
-
-    .hero-image {
-      width: 10vw;
-      min-width: 80px;
-      max-width: 140px;
+      width: auto;
       animation: floaty 6s ease-in-out infinite;
-      background: transparent;
+    }
+
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to { transform: translateX(-200%); }
     }
 
     @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
+      0% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
-    }
-
-    section {
-      padding: 6rem 2rem 4rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .section-image {
-      width: 100%;
-      border-radius: 10px;
-      margin: 2rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      background: #0077cc;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 9999;
-    }
-
-    .floating-btn:hover {
-      background-color: #005fa3;
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>DOKOBUS</h1>
     <nav>
-      <a href="#about">私たちについて</a>
-      <a href="#service">サービス</a>
-      <a href="#contact">お問い合わせ</a>
+      <div>DOKOBUS</div>
+      <div>私たちについて</div>
+      <div>サービス</div>
+      <div>お問い合わせ</div>
     </nav>
   </header>
 
   <div class="hero">
-    <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
-    <div class="scroll-wrapper">
-      <div class="hero-track" id="track1"></div>
-      <div class="hero-track" id="track2"></div>
+    <h1>地域と人をつなぐ DOKOBUS</h1>
+
+    <!-- ①：上段、ゆっくり -->
+    <div class="scroll-track" style="top: 20%; height: 90px; animation-duration: 60s;">
+      <img src="images/img1.png" />
+      <img src="images/img2.png" />
+      <img src="images/img3.png" />
+      <img src="images/img4.png" />
+    </div>
+
+    <!-- ②：中段、普通 -->
+    <div class="scroll-track" style="top: 45%; height: 120px; animation-duration: 40s;">
+      <img src="images/img5.png" />
+      <img src="images/img6.png" />
+      <img src="images/img7.png" />
+      <img src="images/img8.png" />
+    </div>
+
+    <!-- ③：下段、速め -->
+    <div class="scroll-track" style="top: 70%; height: 100px; animation-duration: 25s;">
+      <img src="images/img9.png" />
+      <img src="images/img10.png" />
+      <img src="images/img11.png" />
+      <img src="images/img12.png" />
     </div>
   </div>
 
-  <section id="about">
-    <h2>私たちについて</h2>
-    <img src="images/about.jpg" alt="about" class="section-image" />
-    <p>地域と人をつなぐ、新しいバスのカタチ。</p>
-  </section>
-
-  <section id="service">
-    <h2>サービス</h2>
-    <img src="images/service.jpg" alt="service" class="section-image" />
-    <p>オンデマンドバスで地域の移動をもっと自由に。</p>
-  </section>
-
-  <section id="contact">
-    <h2>お問い合わせ</h2>
-    <img src="images/contact.jpg" alt="contact" class="section-image" />
-    <p>お気軽にご連絡ください。</p>
-  </section>
-
-  <a href="#contact" class="floating-btn">予約する</a>
-
-  <script>
-    const images = [
-      { src: 'images/top1.PNG', top: 10, left: 10, speed: 60 },
-      { src: 'images/top2.PNG', top: 30, left: 25, speed: 80 },
-      { src: 'images/top3.PNG', top: 50, left: 40, speed: 100 },
-      { src: 'images/top4.PNG', top: 70, left: 55, speed: 90 },
-      { src: 'images/top1.PNG', top: 20, left: 70, speed: 70 },
-      { src: 'images/top2.PNG', top: 40, left: 85, speed: 65 },
-      { src: 'images/top3.PNG', top: 60, left: 50, speed: 95 },
-      { src: 'images/top4.PNG', top: 80, left: 35, speed: 110 },
-      { src: 'images/top1.PNG', top: 15, left: 60, speed: 85 }
-    ];
-
-    function addImagesToTrack(track) {
-      const styleEl = document.createElement('style');
-      document.head.appendChild(styleEl);
-      const styleSheet = styleEl.sheet;
-
-      images.forEach(({ src, top, left, speed }, i) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'hero-image-wrapper';
-        wrapper.style.top = `${top}%`;
-        wrapper.style.left = `${left}%`;
-        wrapper.style.position = 'absolute';
-
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'hero-image';
-
-        const animName = `scroll-wrapper-${i}`;
-        const deg = (Math.random() * 20 - 10).toFixed(1);
-
-        wrapper.style.animation = `${animName} ${speed}s linear infinite`;
-        wrapper.style.transform = `rotate(${deg}deg)`;
-
-        const keyframes = `
-          @keyframes ${animName} {
-            0% { transform: translateX(100vw) rotate(${deg}deg); }
-            100% { transform: translateX(-100vw) rotate(${deg}deg); }
-          }
-        `;
-        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-
-        wrapper.appendChild(img);
-        track.appendChild(wrapper);
-      });
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      addImagesToTrack(document.getElementById('track1'));
-      addImagesToTrack(document.getElementById('track2'));
-    });
-  </script>
 </body>
 </html>
