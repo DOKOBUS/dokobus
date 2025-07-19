@@ -1,277 +1,70 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOKOBUS - 完全修正版</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #fff;
-      overflow-x: hidden;
-    }
+/* 共通 */
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 4vw;
+  background-color: white;
+  position: relative;
+  z-index: 100;
+  min-height: 70px;
+}
 
-    header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.5rem 2rem;
-      background-color: white;
-      position: relative;
-      z-index: 100;
-      min-height: 70px;
-    }
+nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 2rem;
+}
 
-    .logo-bar {
-      flex-shrink: 0;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
 
-    .logo-bar h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #000;
-    }
+nav a:last-child {
+  background-color: #0077cc;
+  color: #fff;
+  font-weight: bold;
+}
 
-    nav {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: nowrap;
-      align-items: center;
-    }
+nav a:last-child:hover {
+  background-color: #005fa3;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      padding: 6px 12px;
-      transition: all 0.3s ease;
-      border-radius: 20px;
-      font-size: 0.95rem;
-    }
+/* モバイル修正 */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+  }
 
-    nav a:last-child {
-      background-color: #0077cc;
-      color: #fff;
-      font-weight: bold;
-    }
+  nav {
+    justify-content: flex-start;
+    background-color: transparent;
+    flex-wrap: nowrap;
+    padding: 0.3rem 0;
+    gap: 1rem;
+    margin-left: 0;
+  }
 
-    nav a:last-child:hover {
-      background-color: #005fa3;
-    }
+  nav a {
+    color: #000;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
 
-    .hero {
-      width: 100%;
-      height: auto;
-      position: relative;
-      background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
-      background-size: 800% 800%;
-      animation: bgGradient 60s ease infinite;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding-top: 100px;
-      padding-bottom: 40px;
-    }
-
-    @keyframes bgGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .hero-text {
-      position: relative;
-      top: auto;
-      left: auto;
-      transform: none;
-      font-size: 5vw;
-      margin: 1rem 0;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(0,0,0,0.3);
-      text-align: center;
-      font-weight: bold;
-      z-index: 10;
-      white-space: nowrap;
-    }
-
-    .scroll-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      width: 100%;
-      position: relative;
-    }
-
-    .scroll-track {
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .row {
-      display: flex;
-      gap: 20px;
-      animation: scroll-left 40s linear infinite;
-      align-items: center;
-      box-sizing: border-box;
-      width: max-content;
-    }
-
-    .row.middle {
-      animation-duration: 60s;
-    }
-
-    .row.bottom {
-      animation-duration: 80s;
-    }
-
-    .row img {
-      width: 15vw;
-      height: auto;
-      max-height: 30vh;
-      object-fit: contain;
-      display: block;
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    section {
-      padding: 6rem 2rem 4rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .section-image {
-      width: 100%;
-      border-radius: 10px;
-      margin: 2rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      background: #0077cc;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 9999;
-    }
-
-    .floating-btn:hover {
-      background-color: #005fa3;
-    }
-
-    /* モバイル対応 */
-    @media (max-width: 768px) {
-      .row img {
-        width: 80px;
-        height: auto;
-        max-height: 100px;
-        object-fit: contain;
-      }
-
-      nav {
-        justify-content: center;
-        background-color: #000;
-        flex-wrap: wrap;
-        padding: 0.5rem 1rem;
-      }
-
-      nav a {
-        color: #fff;
-        font-size: 0.8rem;
-        padding: 4px 6px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo-bar">
-      <h1>DOKOBUS <span style="font-weight: normal;">white</span></h1>
-    </div>
-    <nav>
-      <a href="#about">私たちについて</a>
-      <a href="#service">サービス</a>
-      <a href="#contact">お問い合わせ</a>
-    </nav>
-  </header>
-
-  <div class="hero">
-    <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
-
-    <div class="scroll-wrapper">
-      <div class="scroll-track">
-        <div class="row">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
-
-      <div class="scroll-track">
-        <div class="row middle">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
-
-      <div class="scroll-track">
-        <div class="row bottom">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="about">
-    <h2>私たちについて</h2>
-    <img src="images/about.jpg" alt="about" class="section-image" />
-    <p>地域と人をつなぐ、新しいバスのカタチ。</p>
-  </section>
-
-  <section id="service">
-    <h2>サービス</h2>
-    <img src="images/service.jpg" alt="service" class="section-image" />
-    <p>オンデマンドバスで地域の移動をもっと自由に。</p>
-  </section>
-
-  <section id="contact">
-    <h2>お問い合わせ</h2>
-    <img src="images/contact.jpg" alt="contact" class="section-image" />
-    <p>お気軽にご連絡ください。</p>
-  </section>
-
-  <a href="#contact" class="floating-btn">予約する</a>
-</body>
-</html>
+  .row img {
+    width: 22vw;
+    max-height: 120px;
+    height: auto;
+  }
+}
