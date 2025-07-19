@@ -19,7 +19,7 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
+      padding: 1rem clamp(1rem, 5vw, 2rem); /* ← 左右の余白を自動調整！ */
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 10000;
       display: flex;
@@ -130,13 +130,6 @@
       object-fit: contain;
     }
 
-    @media (max-width: 768px) {
-      .row img {
-        width: 25vw;
-        max-height: 20vh;
-      }
-    }
-
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -171,6 +164,35 @@
 
     .floating-btn:hover {
       background-color: #005fa3;
+    }
+
+    /* 🛠️ スマホ最適化用！ */
+    @media (max-width: 768px) {
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+      }
+
+      .row img {
+        width: 32vw; /* ← スマホでも大きめに表示！ */
+        max-height: none;
+      }
+
+      .hero-text {
+        font-size: 6vw;
+      }
     }
   </style>
 </head>
