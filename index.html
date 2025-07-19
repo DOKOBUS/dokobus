@@ -1,4 +1,183 @@
-function addImagesToTrack(track) {
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOKOBUS - RYOZAN風</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
+      background-size: 800% 800%;
+      animation: bgGradient 60s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @keyframes bgGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 3vw;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .scroll-wrapper {
+      width: 200%;
+      display: flex;
+      animation: scroll-left 80s linear infinite;
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+    }
+
+    .hero-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .hero-image {
+      position: absolute;
+      width: 10vw;
+      min-width: 80px;
+      max-width: 140px;
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ======== HEADER ======== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-image {
+      width: 100%;
+      border-radius: 10px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: #0077cc;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .floating-btn:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
+    <div class="scroll-wrapper">
+      <div class="hero-track" id="track1"></div>
+      <div class="hero-track" id="track2"></div>
+    </div>
+  </div>
+
+  <header>
+    <h1>DOKOBUS</h1>
+    <nav>
+      <a href="#about">私たちについて</a>
+      <a href="#service">サービス</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>私たちについて</h2>
+    <img src="images/about.jpg" alt="about" class="section-image" />
+    <p>地域と人をつなぐ、新しいバスのカタチ。</p>
+  </section>
+
+  <section id="service">
+    <h2>サービス</h2>
+    <img src="images/service.jpg" alt="service" class="section-image" />
+    <p>オンデマンドバスで地域の移動をもっと自由に。</p>
+  </section>
+
+  <section id="contact">
+    <h2>お問い合わせ</h2>
+    <img src="images/contact.jpg" alt="contact" class="section-image" />
+    <p>お気軽にご連絡ください。</p>
+  </section>
+
+  <a href="#contact" class="floating-btn">予約する</a>
+
+  <script>
+    const images = [
+      'images/top1.PNG', 'images/top2.PNG', 'images/top3.PNG',
+      'images/top4.PNG', 'images/top1.PNG', 'images/top2.PNG',
+      'images/top3.PNG', 'images/top4.PNG', 'images/top1.PNG'
+    ];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function addImagesToTrack(track) {
   const placed = [];
   const minDistance = 120; // px単位で離す（画像のサイズ考慮）
 
@@ -47,3 +226,9 @@ function addImagesToTrack(track) {
     placed.push({ topPx, leftPx });
   });
 }
+
+    addImagesToTrack(document.getElementById('track1'));
+    addImagesToTrack(document.getElementById('track2'));
+  </script>
+</body>
+</html>
