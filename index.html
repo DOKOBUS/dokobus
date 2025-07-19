@@ -2,122 +2,109 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DOKOBUS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOKOBUS - RYOZAN風</title>
   <style>
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      line-height: 1.6;
-      background: #fff;
-      color: #333;
+      background: linear-gradient(45deg, #e0f7fa, #fff3e0, #fce4ec);
+      background-size: 600% 600%;
+      animation: bgGradient 30s ease infinite;
+      overflow-x: hidden;
     }
 
-    header {
-      background-color: #f8f8f8;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      margin: 0;
-    }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      margin-right: 1.5rem;
-      text-decoration: none;
-      color: #333;
-    }
-
-    section {
-      padding: 2rem;
-    }
-
-    .section-image {
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      display: block;
-      border-radius: 8px;
+    @keyframes bgGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero {
       width: 100%;
-      height: 600px;
-      overflow: hidden;
+      height: 100vh;
       position: relative;
-      background-color: #fff;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
 
     .hero-track {
       display: flex;
-      width: calc(300px * 6);
-      animation: slide-left 30s linear infinite;
-      align-items: center;
+      position: absolute;
+      width: 100vw;
+      animation: slide-left 40s linear infinite;
     }
 
     .hero-image {
-      width: 300px;
-      height: auto;
-      margin: 0 20px;
-      object-fit: contain;
+      width: 60vw;
+      max-width: 1000px;
+      margin: 0 2vw;
       animation: floaty 4s ease-in-out infinite;
-      will-change: transform;
     }
-
-    .hero-image:nth-child(2) { animation-duration: 6s; }
-    .hero-image:nth-child(3) { animation-duration: 5s; }
-    .hero-image:nth-child(4) { animation-duration: 4.5s; }
-    .hero-image:nth-child(5) { animation-duration: 6.5s; }
-    .hero-image:nth-child(6) { animation-duration: 5.5s; }
 
     @keyframes slide-left {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-300%); }
     }
 
     @keyframes floaty {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-5px) rotate(1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .hero-text {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       color: #fff;
-      font-size: 3rem;
-      font-weight: bold;
+      font-size: 3vw;
       text-align: center;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-      z-index: 2;
-      padding: 0 20px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-image {
+      width: 100%;
+      border-radius: 10px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .floating-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #0077cc;
-      color: #fff;
       padding: 12px 20px;
-      border-radius: 25px;
+      background: #0077cc;
+      color: #fff;
+      border-radius: 30px;
       text-decoration: none;
+      font-weight: bold;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: background-color 0.3s;
-      z-index: 1000;
+      z-index: 999;
     }
 
     .floating-btn:hover {
@@ -125,16 +112,12 @@
     }
   </style>
 </head>
-
 <body>
   <div class="hero">
     <div class="hero-track">
-      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
-      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
-      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
-      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
-      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
-      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
+      <img src="images/top1.png" class="hero-image" alt="画像1" />
+      <img src="images/top2.png" class="hero-image" alt="画像2" />
+      <img src="images/top3.png" class="hero-image" alt="画像3" />
     </div>
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
   </div>
@@ -150,19 +133,19 @@
 
   <section id="about">
     <h2>私たちについて</h2>
-    <img src="images/about.jpg" alt="人と地域をつなぐバス" class="section-image" />
+    <img src="images/about.jpg" alt="about" class="section-image" />
     <p>地域と人をつなぐ、新しいバスのカタチ。</p>
   </section>
 
   <section id="service">
     <h2>サービス</h2>
-    <img src="images/service.jpg" alt="サービス紹介画像" class="section-image" />
+    <img src="images/service.jpg" alt="service" class="section-image" />
     <p>オンデマンドバスで地域の移動をもっと自由に。</p>
   </section>
 
   <section id="contact">
     <h2>お問い合わせ</h2>
-    <img src="images/contact.jpg" alt="お問い合わせイメージ" class="section-image" />
+    <img src="images/contact.jpg" alt="contact" class="section-image" />
     <p>お気軽にご連絡ください。</p>
   </section>
 
