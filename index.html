@@ -90,12 +90,17 @@
       left: 0;
     }
 
-    .hero-image {
-      position: absolute;
-      width: 10vw;
-      min-width: 80px;
-      max-width: 140px;
-      z-index: 1;
+    .hero-image-wrapper {
+  position: absolute;
+  z-index: 1;
+  transform: rotate(0deg);
+    }
+
+.hero-image {
+  width: 10vw;
+  min-width: 80px;
+  max-width: 140px;
+  animation: floaty 6s ease-in-out infinite;
     }
 
     @keyframes floaty {
@@ -189,38 +194,36 @@
     ];
 
     function addImagesToTrack(track) {
-      const styleSheet = document.styleSheets[0];
+  const styleSheet = document.styleSheets[0];
 
-      images.forEach(({ src, top, left, speed }, i) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'hero-image';
-        img.style.top = `${top}%`;
-        img.style.left = `${left}%`;
+  images.forEach(({ src, top, left, speed }, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'hero-image-wrapper';
+    wrapper.style.top = `${top}%`;
+    wrapper.style.left = `${left}%`;
 
-        const animName = `scroll-img-${i}`;
-        const deg = (Math.random() * 20 - 10).toFixed(1);
+    const deg = (Math.random() * 20 - 10).toFixed(1);
+    wrapper.style.transform = `rotate(${deg}deg)`;
 
-        // 初期状態は rotate() だけ
-        img.style.transform = `rotate(${deg}deg)`;
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'hero-image';
 
-        // アニメーション2つ（左右スライドと浮き）
-        img.style.animation = `${animName} ${speed}s linear infinite, floaty 6s ease-in-out infinite`;
+    const animName = `scroll-img-${i}`;
+    img.style.animation = `${animName} ${speed}s linear infinite, floaty 6s ease-in-out infinite`;
 
-        const keyframes = `
-          @keyframes ${animName} {
-            0% { transform: translateX(100vw) rotate(${deg}deg); }
-            100% { transform: translateX(-100vw) rotate(${deg}deg); }
-          }
-        `;
-        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    const keyframes = `
+      @keyframes ${animName} {
+        0% { transform: translateX(100vw); }
+        100% { transform: translateX(-100vw); }
+      }
+    `;
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
-        track.appendChild(img);
-      });
-    }
-
-    addImagesToTrack(document.getElementById('track1'));
-    addImagesToTrack(document.getElementById('track2'));
+    wrapper.appendChild(img);
+    track.appendChild(wrapper);
+  });
+}
   </script>
 </body>
 </html>
