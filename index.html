@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOKOBUS - 切り替えアニメ</title>
+  <title>DOKOBUS - RYOZAN風</title>
   <style>
     body {
       margin: 0;
@@ -33,9 +33,9 @@
 
     .hero-text {
       position: absolute;
-      top: 10%;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       color: #fff;
       font-size: 3vw;
       font-weight: bold;
@@ -51,37 +51,19 @@
       height: 100%;
       top: 0;
       left: 0;
-      pointer-events: none;
     }
 
-    .sliding-mode {
-      display: flex;
-      gap: 4vw;
-      align-items: center;
-      animation: slide-left 40s linear infinite;
-      transform: translateY(-50%);
-      top: 50%;
-      justify-content: flex-start;
+    .hero-track.scattered {
+      animation: none;
+      /* ← display: block は削除！！ */
     }
 
-    @keyframes slide-left {
-      0% { transform: translateX(0) translateY(-50%); }
-      100% { transform: translateX(-50%) translateY(-50%); }
-    }
-
-    .hero-image {
-      width: 12vw;
-      min-width: 100px;
-      max-width: 150px;
-      height: auto;
-    }
-
-    .scattered-mode {
-      display: block;
-    }
-
-    .scattered-mode .hero-image {
+    .hero-track.scattered .hero-image {
       position: absolute;
+      width: 10vw;
+      min-width: 80px;
+      max-width: 140px;
+      height: auto;
       animation: floaty 6s ease-in-out infinite;
       transition: transform 0.3s;
     }
@@ -91,15 +73,83 @@
       50% { transform: translateY(-10px); }
     }
 
-    .scattered-mode .hero-image:nth-child(1) { top: 15%; left: 5%; transform: rotate(-4deg); }
-    .scattered-mode .hero-image:nth-child(2) { top: 30%; left: 25%; transform: rotate(6deg); }
-    .scattered-mode .hero-image:nth-child(3) { top: 10%; left: 55%; transform: rotate(-6deg); }
-    .scattered-mode .hero-image:nth-child(4) { top: 50%; left: 10%; transform: rotate(3deg); }
-    .scattered-mode .hero-image:nth-child(5) { top: 45%; left: 35%; transform: rotate(-8deg); }
-    .scattered-mode .hero-image:nth-child(6) { top: 60%; left: 60%; transform: rotate(5deg); }
-    .scattered-mode .hero-image:nth-child(7) { top: 20%; left: 75%; transform: rotate(-3deg); }
-    .scattered-mode .hero-image:nth-child(8) { top: 70%; left: 20%; transform: rotate(4deg); }
-    .scattered-mode .hero-image:nth-child(9) { top: 75%; left: 80%; transform: rotate(-5deg); }
+    /* 画像の散らし配置（9枚分） */
+    .hero-track.scattered .hero-image:nth-child(1) {
+      top: 15%;
+      left: 5%;
+      transform: rotate(-4deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(2) {
+      top: 30%;
+      left: 25%;
+      transform: rotate(6deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(3) {
+      top: 10%;
+      left: 55%;
+      transform: rotate(-6deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(4) {
+      top: 50%;
+      left: 10%;
+      transform: rotate(3deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(5) {
+      top: 45%;
+      left: 35%;
+      transform: rotate(-8deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(6) {
+      top: 60%;
+      left: 60%;
+      transform: rotate(5deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(7) {
+      top: 20%;
+      left: 75%;
+      transform: rotate(-3deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(8) {
+      top: 70%;
+      left: 20%;
+      transform: rotate(4deg);
+    }
+    .hero-track.scattered .hero-image:nth-child(9) {
+      top: 75%;
+      left: 80%;
+      transform: rotate(-5deg);
+    }
+
+    /* ======== HEADER ======== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-image {
+      width: 100%;
+      border-radius: 10px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
     .floating-btn {
       position: fixed;
@@ -113,38 +163,17 @@
       font-weight: bold;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       z-index: 999;
-      border: none;
-      cursor: pointer;
     }
 
     .floating-btn:hover {
       background-color: #005fa3;
-    }
-
-    .hidden {
-      display: none !important;
     }
   </style>
 </head>
 <body>
   <div class="hero">
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
-
-    <!-- スライド -->
-    <div class="hero-track sliding-mode" id="slideTrack">
-      <img src="images/top1.PNG" class="hero-image" alt="画像1" />
-      <img src="images/top2.PNG" class="hero-image" alt="画像2" />
-      <img src="images/top3.PNG" class="hero-image" alt="画像3" />
-      <img src="images/top4.PNG" class="hero-image" alt="画像4" />
-      <img src="images/top5.PNG" class="hero-image" alt="画像5" />
-      <img src="images/top6.PNG" class="hero-image" alt="画像6" />
-      <img src="images/top7.PNG" class="hero-image" alt="画像7" />
-      <img src="images/top8.PNG" class="hero-image" alt="画像8" />
-      <img src="images/top9.PNG" class="hero-image" alt="画像9" />
-    </div>
-
-    <!-- バラバラ -->
-    <div class="hero-track scattered-mode hidden" id="scatterTrack">
+    <div class="hero-track scattered">
       <img src="images/top1.PNG" class="hero-image" alt="画像1" />
       <img src="images/top2.PNG" class="hero-image" alt="画像2" />
       <img src="images/top3.PNG" class="hero-image" alt="画像3" />
@@ -157,33 +186,33 @@
     </div>
   </div>
 
-  <button id="toggleBtn" class="floating-btn">バラバラにする</button>
+  <header>
+    <h1>DOKOBUS</h1>
+    <nav>
+      <a href="#about">私たちについて</a>
+      <a href="#service">サービス</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
 
-  <script>
-    const toggleBtn = document.getElementById("toggleBtn");
-    const slideTrack = document.getElementById("slideTrack");
-    const scatterTrack = document.getElementById("scatterTrack");
+  <section id="about">
+    <h2>私たちについて</h2>
+    <img src="images/about.jpg" alt="about" class="section-image" />
+    <p>地域と人をつなぐ、新しいバスのカタチ。</p>
+  </section>
 
-    let isScatter = false;
+  <section id="service">
+    <h2>サービス</h2>
+    <img src="images/service.jpg" alt="service" class="section-image" />
+    <p>オンデマンドバスで地域の移動をもっと自由に。</p>
+  </section>
 
-    function updateView() {
-      if (isScatter) {
-        slideTrack.classList.add("hidden");
-        scatterTrack.classList.remove("hidden");
-        toggleBtn.textContent = "スライドに戻す";
-      } else {
-        slideTrack.classList.remove("hidden");
-        scatterTrack.classList.add("hidden");
-        toggleBtn.textContent = "バラバラにする";
-      }
-    }
+  <section id="contact">
+    <h2>お問い合わせ</h2>
+    <img src="images/contact.jpg" alt="contact" class="section-image" />
+    <p>お気軽にご連絡ください。</p>
+  </section>
 
-    toggleBtn.addEventListener("click", () => {
-      isScatter = !isScatter;
-      updateView();
-    });
-
-    updateView(); // 初期状態を反映
-  </script>
+  <a href="#contact" class="floating-btn">予約する</a>
 </body>
 </html>
