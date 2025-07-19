@@ -12,15 +12,17 @@
       overflow-x: hidden;
     }
 
-    /* === ヒーローセクション === */
     .hero {
       width: 100%;
       height: 100vh;
       position: relative;
-      overflow: hidden;
       background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
       background-size: 800% 800%;
       animation: bgGradient 60s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
     @keyframes bgGradient {
@@ -35,49 +37,43 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #fff;
-      font-size: 3.5vw;
+      font-size: 3vw;
       font-weight: bold;
       text-align: center;
       text-shadow: 0 0 10px rgba(0,0,0,0.3);
       z-index: 2;
+      white-space: nowrap;
     }
 
     .hero-track {
-  display: flex;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: calc(6 * 24vw);
-  animation: slide-left 60s linear infinite;
-  height: auto;
+      display: flex;
+      gap: 4vw;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: slide-left 40s linear infinite;
     }
 
-@keyframes slide-left {
-  0% { transform: translateY(-50%) translateX(0); }
-  100% { transform: translateY(-50%) translateX(-50%); }
+    @keyframes slide-left {
+      0% { transform: translateX(0) translateY(-50%); }
+      100% { transform: translateX(-50%) translateY(-50%); }
     }
 
-.hero-image {
-  width: 24vw;
-  max-width: 200px;
-  margin: 0 1vw;
-  animation: floaty 4s ease-in-out infinite;
+    .hero-image {
+      width: 12vw;
+      min-width: 100px;
+      max-width: 150px;
+      height: auto;
+      animation: floaty 4s ease-in-out infinite;
     }
 
     @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* 個別アニメーション遅延 */
-    .hero-image:nth-child(1) { animation-delay: 0s; }
-    .hero-image:nth-child(2) { animation-delay: 0.5s; }
-    .hero-image:nth-child(3) { animation-delay: 1s; }
-    .hero-image:nth-child(4) { animation-delay: 1.5s; }
-    .hero-image:nth-child(5) { animation-delay: 2s; }
-    .hero-image:nth-child(6) { animation-delay: 2.5s; }
-
+    /* ======== HEADER ======== */
     header {
       position: sticky;
       top: 0;
@@ -128,7 +124,6 @@
   </style>
 </head>
 <body>
-  <!-- ヒーローセクション -->
   <div class="hero">
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
     <div class="hero-track">
@@ -138,10 +133,13 @@
       <img src="images/top1.PNG" class="hero-image" alt="画像4" />
       <img src="images/top2.PNG" class="hero-image" alt="画像5" />
       <img src="images/top3.PNG" class="hero-image" alt="画像6" />
+      <!-- 繰り返すとスライドがループ風に見えてGOOD -->
+      <img src="images/top1.PNG" class="hero-image" alt="画像7" />
+      <img src="images/top2.PNG" class="hero-image" alt="画像8" />
+      <img src="images/top3.PNG" class="hero-image" alt="画像9" />
     </div>
   </div>
 
-  <!-- ヘッダー -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -151,7 +149,6 @@
     </nav>
   </header>
 
-  <!-- コンテンツ -->
   <section id="about">
     <h2>私たちについて</h2>
     <img src="images/about.jpg" alt="about" class="section-image" />
