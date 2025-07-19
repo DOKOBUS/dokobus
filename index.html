@@ -5,23 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOKOBUS - RYOZAN風</title>
   <style>
-    /* === 背景グラデーション === */
+    /* === ベース設定 === */
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      background: linear-gradient(45deg, #e0f7fa, #fff3e0, #fce4ec);
-      background-size: 600% 600%;
-      animation: bgGradient 30s ease infinite;
+      background: #fff;
       overflow-x: hidden;
     }
 
-    @keyframes bgGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* === ヒーローセクション === */
+    /* === グラデ背景をヒーローセクションのみに適用 === */
     .hero {
       width: 100%;
       height: 100vh;
@@ -30,12 +22,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
+      background-size: 600% 600%;
+      animation: bgGradient 30s ease infinite;
+    }
+
+    @keyframes bgGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero-track {
       display: flex;
       animation: slide-left 60s linear infinite;
-      width: calc(6 * 60vw + 6 * 4vw); /* 画像6枚 + マージン分 */
+      width: calc(6 * 60vw + 6 * 4vw);
     }
 
     .hero-image {
@@ -45,7 +46,7 @@
       animation: floaty 4s ease-in-out infinite;
     }
 
-    /* === 個別に高さや揺れ方を変える === */
+    /* === ずらした配置とアニメーション個別設定 === */
     .hero-image:nth-child(1) {
       animation-delay: 0s;
       transform: translateY(0px);
@@ -53,23 +54,32 @@
 
     .hero-image:nth-child(2) {
       animation-delay: 0.5s;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
 
     .hero-image:nth-child(3) {
       animation-delay: 1s;
-      transform: translateY(5px);
+      transform: translateY(16px);
     }
 
-    .hero-image:nth-child(4),
-    .hero-image:nth-child(5),
-    .hero-image:nth-child(6) {
+    .hero-image:nth-child(4) {
       animation-delay: 1.5s;
+      transform: translateY(4px);
+    }
+
+    .hero-image:nth-child(5) {
+      animation-delay: 2s;
+      transform: translateY(12px);
+    }
+
+    .hero-image:nth-child(6) {
+      animation-delay: 2.5s;
+      transform: translateY(6px);
     }
 
     @keyframes slide-left {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); } /* 画像6枚分でループ */
+      100% { transform: translateX(-50%); }
     }
 
     @keyframes floaty {
@@ -86,11 +96,10 @@
       z-index: 1;
     }
 
-    /* === ヘッダー === */
     header {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
       padding: 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -104,7 +113,6 @@
       font-weight: bold;
     }
 
-    /* === セクション === */
     section {
       padding: 4rem 2rem;
       max-width: 900px;
@@ -118,7 +126,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* === フローティングボタン === */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -139,10 +146,8 @@
   </style>
 </head>
 <body>
-  <!-- === ヒーローセクション === -->
   <div class="hero">
     <div class="hero-track">
-      <!-- 画像3枚 ×2セット（滑らかループ用） -->
       <img src="images/top1.png" class="hero-image" alt="画像1" />
       <img src="images/top2.png" class="hero-image" alt="画像2" />
       <img src="images/top3.png" class="hero-image" alt="画像3" />
@@ -153,7 +158,6 @@
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
   </div>
 
-  <!-- === ヘッダー === -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -163,7 +167,6 @@
     </nav>
   </header>
 
-  <!-- === コンテンツ === -->
   <section id="about">
     <h2>私たちについて</h2>
     <img src="images/about.jpg" alt="about" class="section-image" />
@@ -182,7 +185,6 @@
     <p>お気軽にご連絡ください。</p>
   </section>
 
-  <!-- === 予約ボタン === -->
   <a href="#contact" class="floating-btn">予約する</a>
 </body>
 </html>
