@@ -51,16 +51,17 @@
       height: 100%;
       top: 0;
       left: 0;
-      display: none;
+      pointer-events: none;
     }
 
-    .hero-track.sliding-mode {
+    .sliding-mode {
       display: flex;
       gap: 4vw;
       align-items: center;
       animation: slide-left 40s linear infinite;
       transform: translateY(-50%);
       top: 50%;
+      justify-content: flex-start;
     }
 
     @keyframes slide-left {
@@ -75,8 +76,8 @@
       height: auto;
     }
 
-    .hero-track.scattered-mode {
-      display: none;
+    .scattered-mode {
+      display: block;
     }
 
     .scattered-mode .hero-image {
@@ -119,6 +120,10 @@
     .floating-btn:hover {
       background-color: #005fa3;
     }
+
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -139,7 +144,7 @@
     </div>
 
     <!-- バラバラ -->
-    <div class="hero-track scattered-mode" id="scatterTrack">
+    <div class="hero-track scattered-mode hidden" id="scatterTrack">
       <img src="images/top1.PNG" class="hero-image" alt="画像1" />
       <img src="images/top2.PNG" class="hero-image" alt="画像2" />
       <img src="images/top3.PNG" class="hero-image" alt="画像3" />
@@ -163,12 +168,12 @@
 
     function updateView() {
       if (isScatter) {
-        slideTrack.style.display = "none";
-        scatterTrack.style.display = "block";
+        slideTrack.classList.add("hidden");
+        scatterTrack.classList.remove("hidden");
         toggleBtn.textContent = "スライドに戻す";
       } else {
-        slideTrack.style.display = "flex";
-        scatterTrack.style.display = "none";
+        slideTrack.classList.remove("hidden");
+        scatterTrack.classList.add("hidden");
         toggleBtn.textContent = "バラバラにする";
       }
     }
@@ -178,8 +183,7 @@
       updateView();
     });
 
-    // 初期表示
-    updateView();
+    updateView(); // 初期状態を反映
   </script>
 </body>
 </html>
