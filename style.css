@@ -68,15 +68,15 @@
 
 .hero-track {
   display: flex;
-  width: calc(100% * 6); /* ←6枚分に修正！！ */
+  width: calc(100% * 6);
   animation: slide-left 30s linear infinite;
 }
 
 .hero-image {
-  width: 100%;
+  flex: 0 0 100%;
   height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  max-width: 100%; /* サイズ制限 */
 }
 
 @keyframes slide-left {
