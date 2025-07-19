@@ -72,87 +72,42 @@
       margin-bottom: 40px;
     }
 
-    <style>
-  .scroll-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    z-index: 2;
-  }
+    .scroll-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      z-index: 2;
+      width: 100%;
+    }
 
-  .scroll-track {
-    overflow: hidden;
-    width: 100%;
-  }
+    .scroll-track {
+      overflow: hidden;
+      width: 100%;
+    }
 
-  .row {
-    display: flex;
-    gap: 20px;
-    animation: scroll-left 40s linear infinite;
-  }
+    .row {
+      display: flex;
+      gap: 20px;
+      animation: scroll-left 40s linear infinite;
+    }
 
-  .row.middle {
-    animation-duration: 60s;
-  }
+    .row.middle {
+      animation-duration: 60s;
+    }
 
-  .row.bottom {
-    animation-duration: 80s;
-  }
+    .row.bottom {
+      animation-duration: 80s;
+    }
 
-  .row img {
-    width: 100px;
-    height: auto;
-  }
+    .row img {
+      width: 100px;
+      height: auto;
+    }
 
-  @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
-<div class="scroll-wrapper">
-  <!-- 上段 -->
-  <div class="scroll-track">
-    <div class="row">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-    </div>
-  </div>
-
-  <!-- 中段 -->
-  <div class="scroll-track">
-    <div class="row middle">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-    </div>
-  </div>
-
-  <!-- 下段 -->
-  <div class="scroll-track">
-    <div class="row bottom">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-      <img src="images/top1.PNG" alt="">
-      <img src="images/top2.PNG" alt="">
-      <img src="images/top3.PNG" alt="">
-      <img src="images/top4.PNG" alt="">
-    </div>
-  </div>
-</div>
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     section {
       padding: 6rem 2rem 4rem;
@@ -201,27 +156,45 @@
 
     <div class="scroll-wrapper">
       <!-- 上段 -->
-      <div class="row">
-        <img src="images/top1.PNG" alt="">
-        <img src="images/top2.PNG" alt="">
-        <img src="images/top3.PNG" alt="">
-        <img src="images/top4.PNG" alt="">
+      <div class="scroll-track">
+        <div class="row">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+        </div>
       </div>
 
       <!-- 中段 -->
-      <div class="row">
-        <img src="images/top1.PNG" alt="">
-        <img src="images/top2.PNG" alt="">
-        <img src="images/top3.PNG" alt="">
-        <img src="images/top4.PNG" alt="">
+      <div class="scroll-track">
+        <div class="row middle">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+        </div>
       </div>
 
       <!-- 下段 -->
-      <div class="row">
-        <img src="images/top1.PNG" alt="">
-        <img src="images/top2.PNG" alt="">
-        <img src="images/top3.PNG" alt="">
-        <img src="images/top4.PNG" alt="">
+      <div class="scroll-track">
+        <div class="row bottom">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+          <img src="images/top1.PNG" alt="">
+          <img src="images/top2.PNG" alt="">
+          <img src="images/top3.PNG" alt="">
+          <img src="images/top4.PNG" alt="">
+        </div>
       </div>
     </div>
   </div>
