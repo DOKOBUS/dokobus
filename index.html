@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOKOBUS - RYOZAN風</title>
   <style>
-    /* === ベース設定 === */
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
@@ -13,92 +12,54 @@
       overflow-x: hidden;
     }
 
-    /* === グラデ背景をヒーローセクションのみに適用 === */
     .hero {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* グラデーションは背景のみ */
-  background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
-  background-size: 800% 800%;
-
-  /* 速度 */
-  animation: bgGradient 60s ease infinite;
-}
-
-@keyframes bgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-    .hero-track {
-      display: flex;
-      animation: slide-left 60s linear infinite;
-      width: calc(6 * 60vw + 6 * 4vw);
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
+      background-size: 800% 800%;
+      animation: bgGradient 60s ease infinite;
     }
 
-    .hero-image {
-      width: 60vw;
-      max-width: 1000px;
-      margin: 0 2vw;
-      animation: floaty 4s ease-in-out infinite;
-    }
-
-    /* === ずらした配置とアニメーション個別設定 === */
-    .hero-image:nth-child(1) {
-      animation-delay: 0s;
-      transform: translateY(0px);
-    }
-
-    .hero-image:nth-child(2) {
-      animation-delay: 0.5s;
-      transform: translateY(8px);
-    }
-
-    .hero-image:nth-child(3) {
-      animation-delay: 1s;
-      transform: translateY(16px);
-    }
-
-    .hero-image:nth-child(4) {
-      animation-delay: 1.5s;
-      transform: translateY(4px);
-    }
-
-    .hero-image:nth-child(5) {
-      animation-delay: 2s;
-      transform: translateY(12px);
-    }
-
-    .hero-image:nth-child(6) {
-      animation-delay: 2.5s;
-      transform: translateY(6px);
-    }
-
-    @keyframes slide-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes bgGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero-text {
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: #fff;
-      font-size: 3vw;
+      font-size: 3.5vw;
+      font-weight: bold;
       text-align: center;
       text-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 1;
+      z-index: 2;
     }
+
+    .hero-image {
+      position: absolute;
+      width: 15vw;
+      max-width: 200px;
+      animation: floaty 4s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* === 画像ごとに配置をランダム化 === */
+    .img1 { top: 10%; left: 5%; animation-delay: 0s; }
+    .img2 { top: 60%; left: 10%; animation-delay: 0.5s; }
+    .img3 { top: 20%; left: 40%; animation-delay: 1s; }
+    .img4 { top: 65%; left: 55%; animation-delay: 1.5s; }
+    .img5 { top: 30%; left: 75%; animation-delay: 2s; }
+    .img6 { top: 5%; left: 85%; animation-delay: 2.5s; }
 
     header {
       position: sticky;
@@ -151,15 +112,13 @@
 </head>
 <body>
   <div class="hero">
-    <div class="hero-track">
-      <img src="images/top1.png" class="hero-image" alt="画像1" />
-      <img src="images/top2.png" class="hero-image" alt="画像2" />
-      <img src="images/top3.png" class="hero-image" alt="画像3" />
-      <img src="images/top1.png" class="hero-image" alt="画像1" />
-      <img src="images/top2.png" class="hero-image" alt="画像2" />
-      <img src="images/top3.png" class="hero-image" alt="画像3" />
-    </div>
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
+    <img src="images/top1.png" class="hero-image img1" alt="画像1" />
+    <img src="images/top2.png" class="hero-image img2" alt="画像2" />
+    <img src="images/top3.png" class="hero-image img3" alt="画像3" />
+    <img src="images/top1.png" class="hero-image img4" alt="画像4" />
+    <img src="images/top2.png" class="hero-image img5" alt="画像5" />
+    <img src="images/top3.png" class="hero-image img6" alt="画像6" />
   </div>
 
   <header>
