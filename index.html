@@ -178,52 +178,16 @@
     }
 
     function addImagesToTrack(track) {
-  const placed = [];
-  const minDistance = 120; // px単位で離す（画像のサイズ考慮）
-
   images.forEach(src => {
-    let tries = 0;
-    let top, left, isOverlapping;
-
-    do {
-      isOverlapping = false;
-      top = random(5, 75);
-      left = random(5, 90);
-
-      // ビューポートの幅からpxに換算
-      const containerWidth = window.innerWidth;
-      const containerHeight = window.innerHeight;
-
-      const leftPx = (left / 100) * containerWidth;
-      const topPx = (top / 100) * containerHeight;
-
-      for (const pos of placed) {
-        const dx = pos.leftPx - leftPx;
-        const dy = pos.topPx - topPx;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < minDistance) {
-          isOverlapping = true;
-          break;
-        }
-      }
-
-      tries++;
-      if (tries > 50) break; // 無限ループ防止
-    } while (isOverlapping);
-
     const img = document.createElement('img');
     img.src = src;
     img.className = 'hero-image';
-    img.style.top = `${top}%`;
-    img.style.left = `${left}%`;
-
+    img.style.top = `${random(5, 75)}%`;
+    img.style.left = `${random(5, 90)}%`;
     const deg = random(-10, 10);
     img.style.setProperty('--rotate', `${deg}deg`);
     img.style.transform = `translateY(0px) rotate(${deg}deg)`;
     track.appendChild(img);
-
-    // 記録
-    placed.push({ topPx, leftPx });
   });
 }
 
