@@ -12,7 +12,6 @@
       overflow-x: hidden;
     }
 
-    /* ======== HEADER ======== */
     header {
       position: fixed;
       top: 0;
@@ -41,7 +40,6 @@
       font-weight: bold;
     }
 
-    /* ======== HERO SECTION ======== */
     .hero {
       width: 100%;
       height: 100vh;
@@ -90,12 +88,16 @@
       left: 0;
     }
 
-    .hero-image {
+    .hero-image-wrapper {
       position: absolute;
+      z-index: 1;
+    }
+
+    .hero-image {
       width: 10vw;
       min-width: 80px;
       max-width: 140px;
-      z-index: 1;
+      animation: floaty 6s ease-in-out infinite;
     }
 
     @keyframes floaty {
@@ -103,7 +105,6 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* ======== SECTION ======== */
     section {
       padding: 6rem 2rem 4rem;
       max-width: 900px;
@@ -117,7 +118,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* ======== FLOATING BUTTON ======== */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -192,30 +192,30 @@
       const styleSheet = document.styleSheets[0];
 
       images.forEach(({ src, top, left, speed }, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'hero-image-wrapper';
+        wrapper.style.top = `${top}%`;
+        wrapper.style.left = `${left}%`;
+        wrapper.style.transform = `rotate(${(Math.random() * 20 - 10).toFixed(1)}deg)`;
+        wrapper.style.position = 'absolute';
+
         const img = document.createElement('img');
         img.src = src;
         img.className = 'hero-image';
-        img.style.top = `${top}%`;
-        img.style.left = `${left}%`;
 
         const animName = `scroll-img-${i}`;
-        const deg = (Math.random() * 20 - 10).toFixed(1);
-
-        // 初期状態は rotate() だけ
-        img.style.transform = `rotate(${deg}deg)`;
-
-        // アニメーション2つ（左右スライドと浮き）
         img.style.animation = `${animName} ${speed}s linear infinite, floaty 6s ease-in-out infinite`;
 
         const keyframes = `
           @keyframes ${animName} {
-            0% { transform: translateX(100vw) rotate(${deg}deg); }
-            100% { transform: translateX(-100vw) rotate(${deg}deg); }
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100vw); }
           }
         `;
         styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
-        track.appendChild(img);
+        wrapper.appendChild(img);
+        track.appendChild(wrapper);
       });
     }
 
