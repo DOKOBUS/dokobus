@@ -59,10 +59,27 @@ section {
   background-color: #004466;
 }
 
-.hero-image {
+.hero {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 400px; /* 高さは自由に調整 */
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  animation: slide-left 30s linear infinite;/* 流れる間隔は15Sを調整 */
+}
+
+@keyframes slide-left {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
 }
 
 .section-image {
