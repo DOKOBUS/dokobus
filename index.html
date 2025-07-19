@@ -12,17 +12,19 @@
       overflow-x: hidden;
     }
 
-   header {
-  display: flex;
-  justify-content: flex-start;  /* ← ロゴ＋ナビを左に寄せる！ */
-  align-items: center;
-  gap: 2rem;  /* ロゴとナビの間隔調整用 */
-  padding: 0 2rem;  /* 左右の余白が必要なら調整 */
-  margin: 0rem;
+    header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 2rem;
+      background-color: white;
+      position: relative;
+      z-index: 100;
     }
-    
+
     .logo-bar {
-      flex: 1;
+      flex-shrink: 0;
     }
 
     .logo-bar h1 {
@@ -81,29 +83,29 @@
     }
 
     .hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 3vw;
-  font-weight: bold;
-  text-align: center;
-  text-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 1000;  /* ← 最前面に！ */
-  white-space: nowrap;
-  pointer-events: none;
-}
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 3vw;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      white-space: nowrap;
+      pointer-events: none;
+    }
 
     .scroll-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  z-index: 1;  /* ← 背面 */
-  width: 100%;
-  position: relative;  /* ← z-index 有効にするために必須！ */
-}
-    
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      z-index: 1;
+      width: 100%;
+      position: relative;
+    }
+
     .scroll-track {
       overflow: hidden;
       width: 100%;
@@ -174,12 +176,13 @@
         align-items: stretch;
         padding: 0;
         margin: 0;
-        gap: 0rem;  /* ロゴとナビの間隔調整用 */
+        gap: 0rem;
       }
 
       .logo-bar {
         background-color: #fff;
         padding: 0.8rem 1rem;
+        text-align: center;
       }
 
       nav {
