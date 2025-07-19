@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOKOBUS</title>
   <style>
     body {
@@ -25,14 +26,12 @@
       margin: 0;
     }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      gap: 1.5rem;
+    nav {
+      margin-top: 0.5rem;
     }
 
     nav a {
+      margin-right: 1.5rem;
       text-decoration: none;
       color: #333;
     }
@@ -41,34 +40,13 @@
       padding: 2rem;
     }
 
-    .floating-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-
-    .floating-button a {
-      display: inline-block;
-      padding: 1rem 1.5rem;
-      background-color: #006699;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease;
-    }
-
-    .floating-button a:hover {
-      background-color: #004466;
-    }
-
+    /* ▼ ヒーロー画像部分（スライド） */
     .hero {
       width: 100%;
-      height: 400px;
+      height: 600px; /* ← 矢印で示してた“高さ”ここ！調整OK！ */
       overflow: hidden;
       position: relative;
+      background-color: #fff; /* 背景色調整可能 */
     }
 
     .hero-track {
@@ -81,8 +59,9 @@
       flex: 0 0 100%;
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: contain; /* ここが“拡大させない”ポイント！ */
       max-width: 100%;
+      padding: 10px; /* 任意：画像にちょっと余白 */
     }
 
     @keyframes slide-left {
@@ -126,15 +105,16 @@
   <!-- ▼ トップ画像（ヒーローバナー） -->
   <div class="hero">
     <div class="hero-track">
-      <img src="images/top1.png" class="hero-image">
-      <img src="images/top2.png" class="hero-image">
-      <img src="images/top3.png" class="hero-image">
-      <img src="images/top1.png" class="hero-image">
-      <img src="images/top2.png" class="hero-image">
-      <img src="images/top3.png" class="hero-image">
+      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image">
+      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image">
+      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image">
+      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image">
+      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image">
+      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image">
     </div>
   </div>
 
+  <!-- ▼ ヘッダー -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -147,7 +127,7 @@
   <!-- ▼ 私たちについて -->
   <section id="about">
     <h2>私たちについて</h2>
-    <img src="images/.png" alt="人と地域をつなぐバス" class="section-image">
+    <img src="images/about.jpg" alt="人と地域をつなぐバス" class="section-image">
     <p>地域と人をつなぐ、新しいバスのカタチ。</p>
   </section>
 
