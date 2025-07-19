@@ -29,51 +29,41 @@
     }
 
     .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      min-height: 100vh;
+      padding-top: 100px;
       position: relative;
-      overflow: hidden;
-      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     h1 {
-      position: relative;
-      z-index: 2;
       font-size: 2em;
-      text-align: center;
       color: #444;
+      margin-bottom: 60px;
+      z-index: 2;
+      position: relative;
     }
 
-    .scroll-track {
-      position: absolute;
+    .row {
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 4vw;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .row img {
       height: 100px;
-      left: 100%;
-      animation-name: scrollLeft;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      z-index: 1;
-    }
-
-    .scroll-track img {
-      height: 100%;
       width: auto;
-      animation: floaty 6s ease-in-out infinite;
     }
 
-    @keyframes scrollLeft {
-      from { transform: translateX(0); }
-      to { transform: translateX(-200%); }
-    }
-
-    @keyframes floaty {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
+    /* レスポンシブ対応 */
+    @media (max-width: 600px) {
+      .row {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
@@ -82,7 +72,6 @@
   <header>
     <nav>
       <div>DOKOBUS</div>
-      <div>私たちについて</div>
       <div>サービス</div>
       <div>お問い合わせ</div>
     </nav>
@@ -91,28 +80,28 @@
   <div class="hero">
     <h1>地域と人をつなぐ DOKOBUS</h1>
 
-    <!-- ①：上段、ゆっくり -->
-    <div class="scroll-track" style="top: 20%; height: 90px; animation-duration: 60s;">
-      <img src="images/img1.png" />
-      <img src="images/img2.png" />
-      <img src="images/img3.png" />
-      <img src="images/img4.png" />
+    <!-- 上段 -->
+    <div class="row">
+      <img src="images/img1.png" alt="">
+      <img src="images/img2.png" alt="">
+      <img src="images/img3.png" alt="">
+      <img src="images/img4.png" alt="">
     </div>
 
-    <!-- ②：中段、普通 -->
-    <div class="scroll-track" style="top: 45%; height: 120px; animation-duration: 40s;">
-      <img src="images/img5.png" />
-      <img src="images/img6.png" />
-      <img src="images/img7.png" />
-      <img src="images/img8.png" />
+    <!-- 中段 -->
+    <div class="row">
+      <img src="images/img5.png" alt="">
+      <img src="images/img6.png" alt="">
+      <img src="images/img7.png" alt="">
+      <img src="images/img8.png" alt="">
     </div>
 
-    <!-- ③：下段、速め -->
-    <div class="scroll-track" style="top: 70%; height: 100px; animation-duration: 25s;">
-      <img src="images/img9.png" />
-      <img src="images/img10.png" />
-      <img src="images/img11.png" />
-      <img src="images/img12.png" />
+    <!-- 下段 -->
+    <div class="row">
+      <img src="images/img9.png" alt="">
+      <img src="images/img10.png" alt="">
+      <img src="images/img11.png" alt="">
+      <img src="images/img12.png" alt="">
     </div>
   </div>
 
