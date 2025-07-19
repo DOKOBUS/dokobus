@@ -17,7 +17,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(0, 0, 0, 0.95); /* ← ここ黒にした！ */
       backdrop-filter: blur(10px);
       padding: 0.6rem 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -31,7 +31,7 @@
     .logo {
       font-size: 1.4rem;
       font-weight: bold;
-      color: #000;
+      color: #fff; /* ← 黒背景だから白文字に！ */
     }
 
     nav {
@@ -41,7 +41,7 @@
 
     nav a {
       text-decoration: none;
-      color: #333;
+      color: #fff; /* ← 黒背景だからリンクも白文字に！ */
       font-weight: 500;
       font-size: 0.9rem;
       padding: 4px 8px;
@@ -50,7 +50,7 @@
     }
 
     nav a:not(:last-child):hover {
-      background-color: #f0f0f0;
+      background-color: rgba(255,255,255,0.2); /* ホバー時ちょい透け白に */
     }
 
     nav a:last-child {
