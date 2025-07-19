@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DOKOBUS</title>
   <style>
-    /* === 全体設定 === */
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
@@ -49,57 +48,64 @@
       border-radius: 8px;
     }
 
-    /* === 新・ヒーロースライダー === */
     .hero {
       width: 100%;
-      background-color: #f0f0f0;
+      height: 600px;
       overflow: hidden;
-      padding: 40px 0;
       position: relative;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-track {
       display: flex;
-      animation: scroll 40s linear infinite;
+      width: calc(300px * 6);
+      animation: slide-left 30s linear infinite;
       align-items: center;
     }
 
     .hero-image {
-      flex: 0 0 auto;
       width: 300px;
-      height: 200px;
+      height: auto;
       margin: 0 20px;
-      border: 8px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      object-fit: cover;
-      border-radius: 10px;
+      object-fit: contain;
+      animation: floaty 4s ease-in-out infinite;
+      will-change: transform;
     }
 
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+    .hero-image:nth-child(2) { animation-duration: 6s; }
+    .hero-image:nth-child(3) { animation-duration: 5s; }
+    .hero-image:nth-child(4) { animation-duration: 4.5s; }
+    .hero-image:nth-child(5) { animation-duration: 6.5s; }
+    .hero-image:nth-child(6) { animation-duration: 5.5s; }
+
+    @keyframes slide-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* === テキストオーバーレイ（任意で非表示でもOK） === */
+    @keyframes floaty {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
     .hero-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #333;
-      font-size: 2.5rem;
+      color: #fff;
+      font-size: 3rem;
       font-weight: bold;
       text-align: center;
-      text-shadow: 2px 2px 5px rgba(255,255,255,0.8);
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
       z-index: 2;
       padding: 0 20px;
     }
 
-    /* === 浮遊ボタン === */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -121,22 +127,18 @@
 </head>
 
 <body>
-
-  <!-- ▼ 新・フレーム入り画像スライダー -->
   <div class="hero">
     <div class="hero-track">
-      <img src="images/top1.jpg" alt="画像1" class="hero-image" />
-      <img src="images/top2.jpg" alt="画像2" class="hero-image" />
-      <img src="images/top3.jpg" alt="画像3" class="hero-image" />
-      <img src="images/top4.jpg" alt="画像4" class="hero-image" />
-      <img src="images/top5.jpg" alt="画像5" class="hero-image" />
-      <img src="images/top1.jpg" alt="画像1" class="hero-image" />
-      <img src="images/top2.jpg" alt="画像2" class="hero-image" />
+      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
+      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
+      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
+      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
+      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
+      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
     </div>
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
   </div>
 
-  <!-- ▼ ヘッダー -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -146,28 +148,24 @@
     </nav>
   </header>
 
-  <!-- ▼ 私たちについて -->
   <section id="about">
     <h2>私たちについて</h2>
     <img src="images/about.jpg" alt="人と地域をつなぐバス" class="section-image" />
     <p>地域と人をつなぐ、新しいバスのカタチ。</p>
   </section>
 
-  <!-- ▼ サービス紹介 -->
   <section id="service">
     <h2>サービス</h2>
     <img src="images/service.jpg" alt="サービス紹介画像" class="section-image" />
     <p>オンデマンドバスで地域の移動をもっと自由に。</p>
   </section>
 
-  <!-- ▼ お問い合わせ -->
   <section id="contact">
     <h2>お問い合わせ</h2>
     <img src="images/contact.jpg" alt="お問い合わせイメージ" class="section-image" />
     <p>お気軽にご連絡ください。</p>
   </section>
 
-  <!-- ▼ 常に右下に表示される予約ボタン -->
   <a href="#contact" class="floating-btn">予約する</a>
 </body>
 </html>
