@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOKOBUS - 完全バージョン</title>
+  <title>DOKOBUS - 完全修正版</title>
   <style>
     body {
       margin: 0;
@@ -14,13 +14,15 @@
 
     /* ======== HEADER ======== */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       padding: 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 9999;
+      z-index: 10000;
     }
 
     header h1 {
@@ -51,7 +53,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      margin-top: 100px; /* ヘッダー分のスペース */
     }
 
     @keyframes bgGradient {
@@ -61,10 +62,7 @@
     }
 
     .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
       color: #fff;
       font-size: 3vw;
       font-weight: bold;
@@ -81,12 +79,15 @@
       top: 0;
       left: 0;
       overflow: hidden;
+      z-index: 1;
     }
 
     .hero-track {
       width: 100%;
       height: 100%;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .hero-image {
@@ -94,7 +95,7 @@
       width: 10vw;
       min-width: 80px;
       max-width: 140px;
-      animation: floaty 6s ease-in-out infinite;
+      z-index: 1;
     }
 
     @keyframes floaty {
@@ -102,9 +103,9 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* ======== SECTION STYLES ======== */
+    /* ======== SECTION ======== */
     section {
-      padding: 4rem 2rem;
+      padding: 6rem 2rem 4rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -128,7 +129,7 @@
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 999;
+      z-index: 9999;
     }
 
     .floating-btn:hover {
@@ -196,16 +197,19 @@
         img.className = 'hero-image';
         img.style.top = `${top}%`;
         img.style.left = `${left}%`;
+
+        const animName = `scroll-img-${i}`;
         const deg = (Math.random() * 20 - 10).toFixed(1);
+
+        // 初期状態は rotate() だけ
         img.style.transform = `rotate(${deg}deg)`;
 
-        // 個別アニメーション
-        const animName = `scroll-img-${i}`;
+        // アニメーション2つ（左右スライドと浮き）
         img.style.animation = `${animName} ${speed}s linear infinite, floaty 6s ease-in-out infinite`;
 
         const keyframes = `
           @keyframes ${animName} {
-            0% { transform: translateX(0) rotate(${deg}deg); }
+            0% { transform: translateX(100vw) rotate(${deg}deg); }
             100% { transform: translateX(-100vw) rotate(${deg}deg); }
           }
         `;
