@@ -59,26 +59,32 @@ section {
   background-color: #004466;
 }
 
-.hero {
+hero {
   width: 100%;
-  height: 400px; /* 高さは自由に調整 */
+  height: 400px;
   overflow: hidden;
   position: relative;
 }
 
+.hero-track {
+  display: flex;
+  width: calc(100% * 3); /* 3枚分なら3倍 */
+  animation: slide-left 30s linear infinite;
+}
+
 .hero-image {
-  position: absolute;
+  width: 100%;
   height: 100%;
-  width: auto;
-  animation: slide-left 30s linear infinite;/* 流れる間隔は15Sを調整 */
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 @keyframes slide-left {
   0% {
-    left: 100%;
+    transform: translateX(0);
   }
   100% {
-    left: -100%;
+    transform: translateX(-66.666%); /* 1枚ずつ出ていくよう調整 */
   }
 }
 
