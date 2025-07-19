@@ -12,21 +12,13 @@
       overflow-x: hidden;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 10000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 1rem;
-      flex-wrap: wrap;
-    }
-
+   header {
+  display: flex;
+  justify-content: flex-start;  /* ← ロゴ＋ナビを左に寄せる！ */
+  align-items: center;
+  gap: 2rem;  /* ロゴとナビの間隔調整用 */
+  padding: 0 2rem;  /* 左右の余白が必要なら調整 */
+}
     .logo-bar {
       flex: 1;
     }
