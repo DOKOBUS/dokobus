@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOKOBUS - RYOZAN風</title>
   <style>
+    /* === 背景グラデーション === */
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
@@ -20,21 +21,21 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* === ヒーローセクション === */
     .hero {
       width: 100%;
       height: 100vh;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-track {
       display: flex;
-      position: absolute;
-      width: 100vw;
-      animation: slide-left 40s linear infinite;
+      animation: slide-left 60s linear infinite;
+      width: calc(6 * 60vw + 6 * 4vw); /* 画像6枚 + マージン分 */
     }
 
     .hero-image {
@@ -44,9 +45,31 @@
       animation: floaty 4s ease-in-out infinite;
     }
 
+    /* === 個別に高さや揺れ方を変える === */
+    .hero-image:nth-child(1) {
+      animation-delay: 0s;
+      transform: translateY(0px);
+    }
+
+    .hero-image:nth-child(2) {
+      animation-delay: 0.5s;
+      transform: translateY(10px);
+    }
+
+    .hero-image:nth-child(3) {
+      animation-delay: 1s;
+      transform: translateY(5px);
+    }
+
+    .hero-image:nth-child(4),
+    .hero-image:nth-child(5),
+    .hero-image:nth-child(6) {
+      animation-delay: 1.5s;
+    }
+
     @keyframes slide-left {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-300%); }
+      100% { transform: translateX(-50%); } /* 画像6枚分でループ */
     }
 
     @keyframes floaty {
@@ -63,6 +86,7 @@
       z-index: 1;
     }
 
+    /* === ヘッダー === */
     header {
       position: sticky;
       top: 0;
@@ -80,6 +104,7 @@
       font-weight: bold;
     }
 
+    /* === セクション === */
     section {
       padding: 4rem 2rem;
       max-width: 900px;
@@ -93,6 +118,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* === フローティングボタン === */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -113,8 +139,13 @@
   </style>
 </head>
 <body>
+  <!-- === ヒーローセクション === -->
   <div class="hero">
     <div class="hero-track">
+      <!-- 画像3枚 ×2セット（滑らかループ用） -->
+      <img src="images/top1.png" class="hero-image" alt="画像1" />
+      <img src="images/top2.png" class="hero-image" alt="画像2" />
+      <img src="images/top3.png" class="hero-image" alt="画像3" />
       <img src="images/top1.png" class="hero-image" alt="画像1" />
       <img src="images/top2.png" class="hero-image" alt="画像2" />
       <img src="images/top3.png" class="hero-image" alt="画像3" />
@@ -122,6 +153,7 @@
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
   </div>
 
+  <!-- === ヘッダー === -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -131,6 +163,7 @@
     </nav>
   </header>
 
+  <!-- === コンテンツ === -->
   <section id="about">
     <h2>私たちについて</h2>
     <img src="images/about.jpg" alt="about" class="section-image" />
@@ -149,6 +182,7 @@
     <p>お気軽にご連絡ください。</p>
   </section>
 
+  <!-- === 予約ボタン === -->
   <a href="#contact" class="floating-btn">予約する</a>
 </body>
 </html>
