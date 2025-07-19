@@ -13,16 +13,16 @@
     }
 
     header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2rem;
-  padding: 1.5rem 2rem; /* ← ここをちょっと増やす */
-  background-color: white;
-  position: relative;
-  z-index: 100;
-  min-height: 70px; /* ← 最低高さも指定 */
-}
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+      background-color: white;
+      position: relative;
+      z-index: 100;
+      min-height: 70px;
+    }
 
     .logo-bar {
       flex-shrink: 0;
@@ -64,7 +64,7 @@
 
     .hero {
       width: 100%;
-      height: 100vh;
+      height: auto;
       position: relative;
       background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
       background-size: 800% 800%;
@@ -74,7 +74,8 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-top: 127px;
+      padding-top: 100px;
+      padding-bottom: 40px;
     }
 
     @keyframes bgGradient {
@@ -84,25 +85,24 @@
     }
 
     .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      font-size: 5vw;
+      margin: 1rem 0;
       color: #fff;
-      font-size: 3vw;
-      font-weight: bold;
-      text-align: center;
       text-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 1000;
+      text-align: center;
+      font-weight: bold;
+      z-index: 10;
       white-space: nowrap;
-      pointer-events: none;
     }
 
     .scroll-wrapper {
       display: flex;
       flex-direction: column;
       gap: 40px;
-      z-index: 1;
       width: 100%;
       position: relative;
     }
@@ -117,6 +117,8 @@
       gap: 20px;
       animation: scroll-left 40s linear infinite;
       align-items: center;
+      box-sizing: border-box;
+      width: max-content;
     }
 
     .row.middle {
@@ -132,6 +134,7 @@
       height: auto;
       max-height: 30vh;
       object-fit: contain;
+      display: block;
     }
 
     @keyframes scroll-left {
@@ -170,75 +173,28 @@
       background-color: #005fa3;
     }
 
-    /* モバイル */
+    /* モバイル対応 */
     @media (max-width: 768px) {
-  .row img {
-    width: 80px;        /* ← 小さすぎず大きすぎず！ */
-    height: auto;
-    max-height: 100px;  /* ← 高さもコントロール！ */
-    object-fit: contain;
-  }
-}
+      .row img {
+        width: 80px;
+        height: auto;
+        max-height: 100px;
+        object-fit: contain;
+      }
 
-  .logo-bar {
-    background-color: #fff;
-    padding: 0.8rem 1rem;
-    text-align: center;
-  }
+      nav {
+        justify-content: center;
+        background-color: #000;
+        flex-wrap: wrap;
+        padding: 0.5rem 1rem;
+      }
 
-  nav {
-    justify-content: center;
-    background-color: #000;
-    flex-wrap: wrap;
-    padding: 0.5rem 1rem;
-  }
-
-  nav a {
-    color: #fff;
-    font-size: 0.8rem;
-    padding: 4px 6px;
-  }
-
-  /* 👇追加①：heroの高さを調整して余白削除 */
-  .hero {
-    height: auto;
-    padding-top: 100px;
-    padding-bottom: 40px;
-  }
-
-  /* 👇追加②：hero-textの位置をスマホ用に修正 */
-  .hero-text {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    font-size: 5vw;
-    margin: 1rem 0;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0,0,0,0.3);
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .row {
-  display: flex;
-  gap: 20px;
-  animation: scroll-left 40s linear infinite;
-  align-items: center;
-  min-width: 400%; /* ← 重要！ */
-  box-sizing: border-box;
-}
-
-.row img {
-  width: 15vw;
-  height: auto;
-  max-height: 30vh;
-  object-fit: contain;
-  max-width: 100%;
-  display: block;
-}
-    
-    
+      nav a {
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 4px 6px;
+      }
+    }
   </style>
 </head>
 <body>
