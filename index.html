@@ -1,5 +1,6 @@
 function addImagesToTrack(track) {
-  const placed = []; // 配置済み画像の位置情報
+  const placed = [];
+  const minDistance = 120; // px単位で離す（画像のサイズ考慮）
 
   images.forEach(src => {
     let tries = 0;
@@ -10,22 +11,26 @@ function addImagesToTrack(track) {
       top = random(5, 75);
       left = random(5, 90);
 
-      // 重なりチェック
+      // ビューポートの幅からpxに換算
+      const containerWidth = window.innerWidth;
+      const containerHeight = window.innerHeight;
+
+      const leftPx = (left / 100) * containerWidth;
+      const topPx = (top / 100) * containerHeight;
+
       for (const pos of placed) {
-        const dx = pos.left - left;
-        const dy = pos.top - top;
+        const dx = pos.leftPx - leftPx;
+        const dy = pos.topPx - topPx;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 12) { // 近すぎると重なるのでやり直し
+        if (distance < minDistance) {
           isOverlapping = true;
           break;
         }
       }
 
       tries++;
-      if (tries > 30) break; // 無限ループ防止
+      if (tries > 50) break; // 無限ループ防止
     } while (isOverlapping);
-
-    placed.push({ top, left });
 
     const img = document.createElement('img');
     img.src = src;
@@ -37,5 +42,8 @@ function addImagesToTrack(track) {
     img.style.setProperty('--rotate', `${deg}deg`);
     img.style.transform = `translateY(0px) rotate(${deg}deg)`;
     track.appendChild(img);
+
+    // 記録
+    placed.push({ topPx, leftPx });
   });
 }
