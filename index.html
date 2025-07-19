@@ -17,40 +17,46 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.95); /* ← ここ黒にした！ */
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      padding: 0.6rem 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 10000;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    .logo {
-      font-size: 1.4rem;
+    .logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      background-color: #fff;
+    }
+
+    .logo-bar h1 {
+      margin: 0;
+      font-size: 1.5rem;
       font-weight: bold;
-      color: #fff; /* ← 黒背景だから白文字に！ */
+      color: #000;
     }
 
     nav {
       display: flex;
-      gap: 0.8rem;
+      gap: 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #000;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
-      color: #fff; /* ← 黒背景だからリンクも白文字に！ */
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 4px 8px;
+      color: #fff;
+      font-weight: 600;
+      padding: 6px 12px;
       transition: all 0.3s ease;
-      border-radius: 12px;
-    }
-
-    nav a:not(:last-child):hover {
-      background-color: rgba(255,255,255,0.2); /* ホバー時ちょい透け白に */
+      border-radius: 20px;
+      font-size: 0.95rem;
     }
 
     nav a:last-child {
@@ -65,7 +71,7 @@
 
     .hero {
       width: 100%;
-      height: 60vh;
+      height: 100vh;
       position: relative;
       background: linear-gradient(270deg, #dbeeff, #e0f7fa, #d1c4e9, #c8e6c9);
       background-size: 800% 800%;
@@ -75,7 +81,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-top: 80px;
+      padding-top: 127px;
     }
 
     @keyframes bgGradient {
@@ -92,13 +98,13 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.3);
       z-index: 2;
       white-space: nowrap;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .scroll-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 40px;
       z-index: 2;
       width: 100%;
     }
@@ -167,46 +173,32 @@
     }
 
     @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: stretch;
-  }
+      .hero {
+        height: 75vh;
+        padding-top: 127px;
+      }
 
-  .logo {
-    align-self: center;
-    margin-bottom: 0.5rem;
-  }
+      .hero-text {
+        font-size: 6vw;
+      }
 
-  nav {
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+      .row img {
+        width: 38vw;
+        max-height: none;
+      }
 
-  nav a {
-    font-size: 0.8rem;
-    padding: 4px 6px;
-  }
-
-  .row img {
-    width: 38vw;
-    max-height: none;
-  }
-
-  .hero {
-    height: 75vh;
-    padding-top: 127px;
-  }
-
-  .hero-text {
-    font-size: 6vw;
-  }
+      nav a {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">DOKOBUS</div>
+    <div class="logo-bar">
+      <h1>DOKOBUS <span style="font-weight: normal;">white</span></h1>
+    </div>
     <nav>
       <a href="#about">私たちについて</a>
       <a href="#service">サービス</a>
