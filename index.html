@@ -14,7 +14,6 @@
       color: #333;
     }
 
-    /* === ヘッダー === */
     header {
       background-color: #f8f8f8;
       padding: 1rem;
@@ -50,41 +49,54 @@
       border-radius: 8px;
     }
 
-    /* === ヒーローセクション（スライド） === */
+    /* === 新・ヒーロースライダー === */
     .hero {
       width: 100%;
-      height: 600px;
+      background-color: #f0f0f0;
       overflow: hidden;
+      padding: 40px 0;
       position: relative;
-      background-color: #fff;
-      display: flex;
-      align-items: center; /* 画像を縦中央揃え */
     }
 
     .hero-track {
       display: flex;
-      width: 600%; /* 画像6枚ぶん（3枚×2） */
-      animation: slide-left 30s linear infinite;
+      animation: scroll 40s linear infinite;
       align-items: center;
     }
 
     .hero-image {
       flex: 0 0 auto;
-      height: auto;
-      max-height: 100%;
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      padding: 10px;
+      width: 300px;
+      height: 200px;
+      margin: 0 20px;
+      border: 8px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    @keyframes slide-left {
+    @keyframes scroll {
       0% {
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-66.666%);
+        transform: translateX(-50%);
       }
+    }
+
+    /* === テキストオーバーレイ（任意で非表示でもOK） === */
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #333;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(255,255,255,0.8);
+      z-index: 2;
+      padding: 0 20px;
     }
 
     /* === 浮遊ボタン === */
@@ -109,16 +121,19 @@
 </head>
 
 <body>
-  <!-- ▼ ヒーロー画像スライダー -->
+
+  <!-- ▼ 新・フレーム入り画像スライダー -->
   <div class="hero">
     <div class="hero-track">
-      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
-      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
-      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
-      <img src="images/top1.png" alt="ヒーロー画像1" class="hero-image" />
-      <img src="images/top2.png" alt="ヒーロー画像2" class="hero-image" />
-      <img src="images/top3.png" alt="ヒーロー画像3" class="hero-image" />
+      <img src="images/top1.jpg" alt="画像1" class="hero-image" />
+      <img src="images/top2.jpg" alt="画像2" class="hero-image" />
+      <img src="images/top3.jpg" alt="画像3" class="hero-image" />
+      <img src="images/top4.jpg" alt="画像4" class="hero-image" />
+      <img src="images/top5.jpg" alt="画像5" class="hero-image" />
+      <img src="images/top1.jpg" alt="画像1" class="hero-image" />
+      <img src="images/top2.jpg" alt="画像2" class="hero-image" />
     </div>
+    <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
   </div>
 
   <!-- ▼ ヘッダー -->
