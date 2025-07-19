@@ -45,27 +45,27 @@
       white-space: nowrap;
     }
 
-    .hero-track {
+    .scroll-wrapper {
+      width: 200%;
+      display: flex;
+      animation: scroll-left 80s linear infinite;
       position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+    }
+
+    .hero-track {
       width: 100%;
       height: 100%;
-      top: 0;
-      left: 0;
+      position: relative;
     }
 
-    .hero-track.scattered {
-      animation: none;
-      /* ← display: block は削除！！ */
-    }
-
-    .hero-track.scattered .hero-image {
+    .hero-image {
       position: absolute;
       width: 10vw;
       min-width: 80px;
       max-width: 140px;
-      height: auto;
       animation: floaty 6s ease-in-out infinite;
-      transition: transform 0.3s;
     }
 
     @keyframes floaty {
@@ -73,51 +73,9 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* 画像の散らし配置（9枚分） */
-    .hero-track.scattered .hero-image:nth-child(1) {
-      top: 15%;
-      left: 5%;
-      transform: rotate(-4deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(2) {
-      top: 30%;
-      left: 25%;
-      transform: rotate(6deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(3) {
-      top: 10%;
-      left: 55%;
-      transform: rotate(-6deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(4) {
-      top: 50%;
-      left: 10%;
-      transform: rotate(3deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(5) {
-      top: 45%;
-      left: 35%;
-      transform: rotate(-8deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(6) {
-      top: 60%;
-      left: 60%;
-      transform: rotate(5deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(7) {
-      top: 20%;
-      left: 75%;
-      transform: rotate(-3deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(8) {
-      top: 70%;
-      left: 20%;
-      transform: rotate(4deg);
-    }
-    .hero-track.scattered .hero-image:nth-child(9) {
-      top: 75%;
-      left: 80%;
-      transform: rotate(-5deg);
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ======== HEADER ======== */
@@ -173,16 +131,9 @@
 <body>
   <div class="hero">
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
-    <div class="hero-track scattered">
-      <img src="images/top1.PNG" class="hero-image" alt="画像1" />
-      <img src="images/top2.PNG" class="hero-image" alt="画像2" />
-      <img src="images/top3.PNG" class="hero-image" alt="画像3" />
-      <img src="images/top4.PNG" class="hero-image" alt="画像4" />
-      <img src="images/top5.PNG" class="hero-image" alt="画像5" />
-      <img src="images/top6.PNG" class="hero-image" alt="画像6" />
-      <img src="images/top7.PNG" class="hero-image" alt="画像7" />
-      <img src="images/top8.PNG" class="hero-image" alt="画像8" />
-      <img src="images/top9.PNG" class="hero-image" alt="画像9" />
+    <div class="scroll-wrapper">
+      <div class="hero-track" id="track1"></div>
+      <div class="hero-track" id="track2"></div>
     </div>
   </div>
 
@@ -214,5 +165,32 @@
   </section>
 
   <a href="#contact" class="floating-btn">予約する</a>
+
+  <script>
+    const images = [
+      'images/top1.PNG', 'images/top2.PNG', 'images/top3.PNG',
+      'images/top4.PNG', 'images/top1.PNG', 'images/top2.PNG',
+      'images/top3.PNG', 'images/top4.PNG', 'images/top1.PNG'
+    ];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function addImagesToTrack(track) {
+      images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'hero-image';
+        img.style.top = `${random(5, 75)}%`;
+        img.style.left = `${random(5, 90)}%`;
+        img.style.transform += ` rotate(${random(-10, 10)}deg)`;
+        track.appendChild(img);
+      });
+    }
+
+    addImagesToTrack(document.getElementById('track1'));
+    addImagesToTrack(document.getElementById('track2'));
+  </script>
 </body>
 </html>
