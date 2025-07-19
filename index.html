@@ -98,6 +98,7 @@
       min-width: 80px;
       max-width: 140px;
       animation: floaty 6s ease-in-out infinite;
+      background: transparent;
     }
 
     @keyframes floaty {
@@ -175,60 +176,58 @@
 
   <a href="#contact" class="floating-btn">予約する</a>
 
- <!-- ★ HTML部分の <script> だけ差し替えればOK！ -->
-<script>
-  const images = [
-    { src: 'images/top1.PNG', top: 10, left: 10, speed: 60 },
-    { src: 'images/top2.PNG', top: 30, left: 25, speed: 80 },
-    { src: 'images/top3.PNG', top: 50, left: 40, speed: 100 },
-    { src: 'images/top4.PNG', top: 70, left: 55, speed: 90 },
-    { src: 'images/top1.PNG', top: 20, left: 70, speed: 70 },
-    { src: 'images/top2.PNG', top: 40, left: 85, speed: 65 },
-    { src: 'images/top3.PNG', top: 60, left: 50, speed: 95 },
-    { src: 'images/top4.PNG', top: 80, left: 35, speed: 110 },
-    { src: 'images/top1.PNG', top: 15, left: 60, speed: 85 }
-  ];
+  <script>
+    const images = [
+      { src: 'images/top1.PNG', top: 10, left: 10, speed: 60 },
+      { src: 'images/top2.PNG', top: 30, left: 25, speed: 80 },
+      { src: 'images/top3.PNG', top: 50, left: 40, speed: 100 },
+      { src: 'images/top4.PNG', top: 70, left: 55, speed: 90 },
+      { src: 'images/top1.PNG', top: 20, left: 70, speed: 70 },
+      { src: 'images/top2.PNG', top: 40, left: 85, speed: 65 },
+      { src: 'images/top3.PNG', top: 60, left: 50, speed: 95 },
+      { src: 'images/top4.PNG', top: 80, left: 35, speed: 110 },
+      { src: 'images/top1.PNG', top: 15, left: 60, speed: 85 }
+    ];
 
-  function addImagesToTrack(track) {
-    const styleSheet = document.styleSheets[0];
+    function addImagesToTrack(track) {
+      const styleEl = document.createElement('style');
+      document.head.appendChild(styleEl);
+      const styleSheet = styleEl.sheet;
 
-    images.forEach(({ src, top, left, speed }, i) => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'hero-image-wrapper';
-      wrapper.style.top = `${top}%`;
-      wrapper.style.left = `${left}%`;
-      wrapper.style.position = 'absolute';
+      images.forEach(({ src, top, left, speed }, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'hero-image-wrapper';
+        wrapper.style.top = `${top}%`;
+        wrapper.style.left = `${left}%`;
+        wrapper.style.position = 'absolute';
 
-      const img = document.createElement('img');
-      img.src = src;
-      img.className = 'hero-image';
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'hero-image';
 
-      const animName = `scroll-wrapper-${i}`;
-      const deg = (Math.random() * 20 - 10).toFixed(1);
+        const animName = `scroll-wrapper-${i}`;
+        const deg = (Math.random() * 20 - 10).toFixed(1);
 
-      // wrapperにスライドアニメーションつける
-      wrapper.style.animation = `${animName} ${speed}s linear infinite`;
-      wrapper.style.transform = `rotate(${deg}deg)`; // 初期角度
+        wrapper.style.animation = `${animName} ${speed}s linear infinite`;
+        wrapper.style.transform = `rotate(${deg}deg)`;
 
-      // 画像には浮きアニメーションのみ
-      img.style.animation = `floaty 6s ease-in-out infinite`;
+        const keyframes = `
+          @keyframes ${animName} {
+            0% { transform: translateX(100vw) rotate(${deg}deg); }
+            100% { transform: translateX(-100vw) rotate(${deg}deg); }
+          }
+        `;
+        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
-      // スライドのキーフレームを作成
-      const keyframes = `
-        @keyframes ${animName} {
-          0% { transform: translateX(100vw) rotate(${deg}deg); }
-          100% { transform: translateX(-100vw) rotate(${deg}deg); }
-        }
-      `;
-      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+        wrapper.appendChild(img);
+        track.appendChild(wrapper);
+      });
+    }
 
-      wrapper.appendChild(img);
-      track.appendChild(wrapper);
+    window.addEventListener("DOMContentLoaded", () => {
+      addImagesToTrack(document.getElementById('track1'));
+      addImagesToTrack(document.getElementById('track2'));
     });
-  }
-
-  addImagesToTrack(document.getElementById('track1'));
-  addImagesToTrack(document.getElementById('track2'));
-</script>
+  </script>
 </body>
 </html>
