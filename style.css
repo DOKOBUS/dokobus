@@ -47,7 +47,7 @@ section {
 /* === ヒーローセクション（スライド画像） === */
 .hero {
   width: 100%;
-  height: 600px; /* ← ← ← これが画像の「見える範囲の高さ」 */
+  height: 600px; /* 画像の「見える範囲の高さ」 */
   overflow: hidden;
   position: relative;
   background-color: #fff;
@@ -55,17 +55,17 @@ section {
 
 .hero-track {
   display: flex;
-  width: 600%; /* 画像6枚ぶん（3種×2） */
+  width: 600%;
   animation: slide-left 30s linear infinite;
+  align-items: center; /* ★追加！ */
 }
 
 .hero-image {
-  flex: 0 0 100%;
-  height: 100%;
-  width: 100%;
-  object-fit: contain; /* 拡大せず、画像全体が表示される */
-  max-width: 100%;
-  padding: 10px; /* 任意で余白入れて調整OK！ */
+  flex: 0 0 auto; /* ★修正！ */
+  max-height: 100%; /* ★追加！ */
+  max-width: 100%; /* ★追加！ */
+  object-fit: contain;
+  padding: 10px;
 }
 
 @keyframes slide-left {
