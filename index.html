@@ -44,14 +44,15 @@
       display: flex;
       gap: 1.5rem;
       padding: 0.5rem 1rem;
-      background-color: #000;
+      background-color: #fff; /* ← デフォルト白に変更 */
       justify-content: center;
       flex-wrap: wrap;
+      transition: background-color 0.3s ease;
     }
 
     nav a {
       text-decoration: none;
-      color: #fff;
+      color: #000;
       font-weight: 600;
       padding: 6px 12px;
       transition: all 0.3s ease;
@@ -173,6 +174,14 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        background-color: #000; /* ← モバイル時だけ黒背景に */
+      }
+
+      nav a {
+        color: #fff;
+      }
+
       .hero {
         height: 75vh;
         padding-top: 127px;
