@@ -13,15 +13,16 @@
     }
 
     header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 2rem;
-      padding: 0 2rem;
-      background-color: white;
-      position: relative;
-      z-index: 100;
-    }
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem; /* ← ここをちょっと増やす */
+  background-color: white;
+  position: relative;
+  z-index: 100;
+  min-height: 70px; /* ← 最低高さも指定 */
+}
 
     .logo-bar {
       flex-shrink: 0;
