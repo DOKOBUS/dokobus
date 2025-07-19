@@ -46,12 +46,11 @@
     }
 
     .scroll-wrapper {
-      width: 200%;
-      display: flex;
-      animation: scroll-left 80s linear infinite;
+      width: 100%;
+      height: 100%;
       position: absolute;
       top: 0; left: 0;
-      height: 100%;
+      overflow: hidden;
     }
 
     .hero-track {
@@ -71,11 +70,6 @@
     @keyframes floaty {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* ======== HEADER ======== */
@@ -168,60 +162,44 @@
 
   <script>
     const images = [
-      'images/top1.PNG', 'images/top2.PNG', 'images/top3.PNG',
-      'images/top4.PNG', 'images/top1.PNG', 'images/top2.PNG',
-      'images/top3.PNG', 'images/top4.PNG', 'images/top1.PNG'
+      { src: 'images/top1.PNG', top: 10, left: 10, speed: 60 },
+      { src: 'images/top2.PNG', top: 30, left: 25, speed: 80 },
+      { src: 'images/top3.PNG', top: 50, left: 40, speed: 100 },
+      { src: 'images/top4.PNG', top: 70, left: 55, speed: 90 },
+      { src: 'images/top1.PNG', top: 20, left: 70, speed: 70 },
+      { src: 'images/top2.PNG', top: 40, left: 85, speed: 65 },
+      { src: 'images/top3.PNG', top: 60, left: 50, speed: 95 },
+      { src: 'images/top4.PNG', top: 80, left: 35, speed: 110 },
+      { src: 'images/top1.PNG', top: 15, left: 60, speed: 85 }
     ];
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
     function addImagesToTrack(track) {
-  const placed = [];
-  const minDistance = 130; // 重なり防止のための最小距離(px)
+      const styleSheet = document.styleSheets[0];
 
-  images.forEach(src => {
-    let tries = 0;
-    let top, left, isOverlapping;
+      images.forEach(({ src, top, left, speed }, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'hero-image';
+        img.style.top = `${top}%`;
+        img.style.left = `${left}%`;
+        const deg = (Math.random() * 20 - 10).toFixed(1);
+        img.style.transform = `rotate(${deg}deg)`;
 
-    do {
-      isOverlapping = false;
-      top = random(5, 75);
-      left = random(5, 90);
+        // 個別のスライドアニメーション
+        const animName = `scroll-img-${i}`;
+        img.style.animation = `${animName} ${speed}s linear infinite, floaty 6s ease-in-out infinite`;
 
-      const containerWidth = window.innerWidth;
-      const containerHeight = window.innerHeight;
-      const leftPx = (left / 100) * containerWidth;
-      const topPx = (top / 100) * containerHeight;
+        const keyframes = `
+          @keyframes ${animName} {
+            0% { transform: translateX(0) rotate(${deg}deg); }
+            100% { transform: translateX(-100vw) rotate(${deg}deg); }
+          }
+        `;
+        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
-      for (const pos of placed) {
-        const dx = pos.leftPx - leftPx;
-        const dy = pos.topPx - topPx;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < minDistance) {
-          isOverlapping = true;
-          break;
-        }
-      }
-
-      tries++;
-      if (tries > 50) break; // 無限ループ防止
-    } while (isOverlapping);
-
-    const img = document.createElement('img');
-    img.src = src;
-    img.className = 'hero-image';
-    img.style.top = `${top}%`;
-    img.style.left = `${left}%`;
-    const deg = random(-10, 10);
-    img.style.setProperty('--rotate', `${deg}deg`);
-    img.style.transform = `translateY(0px) rotate(${deg}deg)`;
-    track.appendChild(img);
-
-    placed.push({ topPx, leftPx });
-  });
-}
+        track.appendChild(img);
+      });
+    }
 
     addImagesToTrack(document.getElementById('track1'));
     addImagesToTrack(document.getElementById('track2'));
