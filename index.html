@@ -12,6 +12,7 @@
       overflow-x: hidden;
     }
 
+    /* === ヒーローセクション === */
     .hero {
       width: 100%;
       height: 100vh;
@@ -41,10 +42,25 @@
       z-index: 2;
     }
 
-    .hero-image {
+    .hero-track {
+      display: flex;
       position: absolute;
-      width: 15vw;
+      width: 300vw;
+      animation: slide-left 60s linear infinite;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    @keyframes slide-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero-image {
+      width: 20vw;
       max-width: 200px;
+      margin: 0 2vw;
       animation: floaty 4s ease-in-out infinite;
     }
 
@@ -53,15 +69,13 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* === 画像ごとに配置をランダム化 === */
-    .img1 { top: 10%; left: 5%; animation-delay: 0s; }
-    .img2 { top: 60%; left: 10%; animation-delay: 0.5s; }
-    .img3 { top: 20%; left: 40%; animation-delay: 1s; }
-    .img4 { top: 65%; left: 55%; animation-delay: 1.5s; }
-    .img5 { top: 30%; left: 75%; animation-delay: 2s; }
-    .img6 { top: 5%; left: 85%; animation-delay: 2.5s; }
-    .img7 { top: 10%; left: 5%; animation-delay: 3.5s; }
-    .img8 { top: 10%; left: 5%; animation-delay: 4.0s; }
+    /* 個別アニメーション遅延 */
+    .hero-image:nth-child(1) { animation-delay: 0s; }
+    .hero-image:nth-child(2) { animation-delay: 0.5s; }
+    .hero-image:nth-child(3) { animation-delay: 1s; }
+    .hero-image:nth-child(4) { animation-delay: 1.5s; }
+    .hero-image:nth-child(5) { animation-delay: 2s; }
+    .hero-image:nth-child(6) { animation-delay: 2.5s; }
 
     header {
       position: sticky;
@@ -113,18 +127,20 @@
   </style>
 </head>
 <body>
+  <!-- ヒーローセクション -->
   <div class="hero">
     <div class="hero-text">地域と人をつなぐ DOKOBUS</div>
-    <img src="images/top1.PNG" class="hero-image img1" alt="画像1" />
-    <img src="images/top2.jpg" class="hero-image img2" alt="画像2" />
-    <img src="images/top3.PNG" class="hero-image img3" alt="画像3" />
-    <img src="images/top4.PNG" class="hero-image img4" alt="画像4" />
-    <img src="images/top1.PNG" class="hero-image img4" alt="画像5" />
-    <img src="images/top2.jpg" class="hero-image img5" alt="画像6" />
-    <img src="images/top3.PNG" class="hero-image img6" alt="画像7" />
-    <img src="images/top4.PNG" class="hero-image img4" alt="画像8" />
+    <div class="hero-track">
+      <img src="images/top1.PNG" class="hero-image" alt="画像1" />
+      <img src="images/top2.PNG" class="hero-image" alt="画像2" />
+      <img src="images/top3.PNG" class="hero-image" alt="画像3" />
+      <img src="images/top1.PNG" class="hero-image" alt="画像4" />
+      <img src="images/top2.PNG" class="hero-image" alt="画像5" />
+      <img src="images/top3.PNG" class="hero-image" alt="画像6" />
+    </div>
   </div>
 
+  <!-- ヘッダー -->
   <header>
     <h1>DOKOBUS</h1>
     <nav>
@@ -134,6 +150,7 @@
     </nav>
   </header>
 
+  <!-- コンテンツ -->
   <section id="about">
     <h2>私たちについて</h2>
     <img src="images/about.jpg" alt="about" class="section-image" />
