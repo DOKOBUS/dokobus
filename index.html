@@ -184,40 +184,46 @@
     }
 
     @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: center;
-        background-color: #000;
-      }
-
-      nav a {
-        color: #fff;
-        font-size: 0.8rem;
-        padding: 4px 8px;
-      }
-
-      .logo-bar h1 {
-        font-size: 1.4rem;
-      }
-
-      .hero-text {
-        font-size: 6vw;
-        transform: none;
-        top: auto;
-        left: auto;
-        margin-top: 1rem;
-        position: relative;
-      }
-
-      .row img {
-        width: 50vw;
-      }
+    .header-inner {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0.5rem 1rem; /* ←ここを小さめに調整 */
+      gap: 0.5rem; /* 間隔追加で詰まり防止 */
     }
+
+    nav {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap; /* ←折り返し許可 */
+      background-color: #000;
+      gap: 0.5rem; /* ナビ項目同士の隙間 */
+    }
+
+    nav a {
+      color: #fff;
+      font-size: 0.75rem; /* ←文字をちょっと小さく */
+      padding: 6px 10px;
+      white-space: nowrap; /* ←折り返さないように */
+    }
+
+   .logo-bar h1 {
+      font-size: 1.4rem;
+    }
+
+   .hero-text {
+      font-size: 6vw;
+      transform: none;
+      top: auto;
+      left: auto;
+      margin-top: 1rem;
+      position: relative;
+    }
+
+   .row img {
+      width: 50vw;
+    }
+  }
+
   </style>
 </head>
 <body>
