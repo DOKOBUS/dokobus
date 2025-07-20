@@ -187,8 +187,9 @@
     .header-inner {
       flex-direction: column;
       align-items: stretch;
-      padding: 0.5rem 1rem; /* ←ここを小さめに調整 */
+      padding: 0rem; /* ←ここを小さめに調整 */
       gap: 0.5rem; /* 間隔追加で詰まり防止 */
+      width: 100%;
     }
 
     nav {
@@ -204,6 +205,13 @@
       font-size: 0.75rem; /* ←文字をちょっと小さく */
       padding: 6px 10px;
       white-space: nowrap; /* ←折り返さないように */
+    }
+
+    .logo-bar,
+      nav {
+      padding: 0.5rem 1rem ;
+      width: 100%;
+      boxsizing: bordre-box;
     }
 
    .logo-bar h1 {
@@ -231,7 +239,7 @@
   <header>
     <div class="header-inner">
       <div class="logo-bar">
-        <h1>DOKOBUS <span style="font-weight: normal;">9</span></h1>
+        <h1>DOKOBUS <span style="font-weight: normal;">1</span></h1>
       </div>
       <nav>
         <a href="#about">DOKOBUSについて</a>
