@@ -10,7 +10,7 @@
       font-family: 'Helvetica Neue', sans-serif;
       background: #fff;
       overflow-x: hidden;
-      padding-top: 140px; /* header + navの高さ */
+      padding-top: 140px;
     }
 
     header {
@@ -39,17 +39,15 @@
     }
 
     nav {
-      width: 100%;
       display: flex;
-      justify-content: center;
       gap: 1.2rem;
-      background-color: #000;
+      background-color: white;
       padding: 0.5rem 1rem;
     }
 
     nav a {
       text-decoration: none;
-      color: #fff;
+      color: #000;
       font-weight: 600;
       padding: 6px 12px;
       transition: all 0.3s ease;
@@ -159,7 +157,7 @@
     }
 
     .lead-text {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       font-weight: bold;
       margin-top: 1rem;
       margin-bottom: 2rem;
@@ -185,13 +183,25 @@
     }
 
     @media (max-width: 768px) {
-      .logo-bar h1 {
-        font-size: 1.4rem;
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        background-color: #000;
       }
 
       nav a {
+        color: #fff;
         font-size: 0.8rem;
         padding: 4px 8px;
+      }
+
+      .logo-bar h1 {
+        font-size: 1.4rem;
       }
 
       .hero-text {
@@ -214,14 +224,14 @@
   <header>
     <div class="header-inner">
       <div class="logo-bar">
-        <h1>DOKOBUS <span style="font-weight: normal;">11</span></h1>
+        <h1>DOKOBUS <span style="font-weight: normal;">2</span></h1>
       </div>
+      <nav>
+        <a href="#about">DOKOBUSについて</a>
+        <a href="#service">サービス</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#about">DOKOBUSについて</a>
-      <a href="#service">サービス</a>
-      <a href="#contact">お問い合わせ</a>
-    </nav>
   </header>
 
   <div class="hero">
@@ -239,7 +249,6 @@
           <img src="images/top4.PNG" alt="">
         </div>
       </div>
-
       <div class="scroll-track">
         <div class="row middle">
           <img src="images/top1.PNG" alt="">
@@ -252,7 +261,6 @@
           <img src="images/top4.PNG" alt="">
         </div>
       </div>
-
       <div class="scroll-track">
         <div class="row bottom">
           <img src="images/top1.PNG" alt="">
