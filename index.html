@@ -142,6 +142,13 @@
       object-fit: contain;
     }
 
+    .row.middle img {
+      transform: scale(1,4);
+      z-index: 2;
+      position: relative;
+    }
+
+
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -207,7 +214,7 @@
 
    .hero {
       height: auto;
-      padding: 120px 0 2rem;
+      padding: 60px 0 1rem;
     }
 
    .hero-text {
@@ -221,8 +228,8 @@
 
    .row img {
       width: 30vw;
-      max-height: 20vh;
-     margin: 0.5rem 0;
+      max-height: 18vh;
+     margin: 0.3rem 0;
     }
       
     .floating-btn {
@@ -251,7 +258,8 @@
 
     .scroll-wrapper {
       width: 100%;
-      padding: 2rem 1rem;
+      padding: 1rem 0;
+      gap: 10px;
     }
   }
 
@@ -262,7 +270,7 @@
   <header>
     <div class="header-inner">
       <div class="logo-bar">
-        <h1>DOKOBUS <span style="font-weight: normal;">66</span></h1>
+        <h1>DOKOBUS <span style="font-weight: normal;">999</span></h1>
       </div>
       <nav>
         <a href="#about">About</a>
