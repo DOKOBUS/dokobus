@@ -13,16 +13,16 @@
     }
 
     header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2rem;
-  padding: 1.5rem 2rem; /* ← ここをちょっと増やす */
-  background-color: white;
-  position: relative;
-  z-index: 100;
-  min-height: 70px; /* ← 最低高さも指定 */
-}
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+      background-color: white;
+      position: relative;
+      z-index: 100;
+      min-height: 70px;
+    }
 
     .logo-bar {
       flex-shrink: 0;
@@ -36,7 +36,11 @@
     }
 
     nav {
-      display: sticky;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: white;
+      display: flex;
       gap: 1.5rem;
       flex-wrap: nowrap;
       align-items: center;
@@ -159,7 +163,7 @@
       padding: 12px 20px;
       background: #0077cc;
       color: #fff;
-      border-radius: 50px;
+      border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -172,84 +176,76 @@
 
     /* モバイル */
     @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
-    gap: 0rem;
-  }
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        margin: 0;
+        gap: 0rem;
+      }
 
-  .logo-bar {
-    background-color: #fff;
-    padding: 0.8rem 1rem;
-    text-align: center;
-  }
+      .logo-bar {
+        background-color: #fff;
+        padding: 0.8rem 1rem;
+        text-align: center;
+      }
 
-  nav {
-    display: sticky;
-    justify-content: center;
-    background-color: #000;
-    flex-wrap: wrap;
-    padding: 0.5rem 1rem;
-  }
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        background-color: #000;
+        flex-wrap: wrap;
+        padding: 0.5rem 1rem;
+      }
 
-  nav a {
-    color: #fff;
-    font-size: 0.8rem;
-    padding: 4px 6px;
-  }
+      nav a {
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 4px 6px;
+      }
 
-  /* 追加①：heroの高さを調整して余白削除 */
-  .hero {
-    height: auto;
-    padding-top: 100px;
-    padding-bottom: 40px;
-    position: relative;
-  }
+      .hero {
+        height: auto;
+        padding-top: 100px;
+        padding-bottom: 40px;
+        position: relative;
+      }
 
-  /* 追加②：hero-textの位置をスマホ用に修正 */
-  .hero-text {
-    position: absolute;
-    top: auto;
-    left: auto;
-    transform: none;
-    font-size: 8vw;
-    margin: 1rem 0;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0,0,0,0.3);
-    text-align: center;
-    font-weight: bold;
-    z-index: 10;
-  }
+      .hero-text {
+        position: absolute;
+        top: auto;
+        left: auto;
+        transform: none;
+        font-size: 8vw;
+        margin: 1rem 0;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        text-align: center;
+        font-weight: bold;
+        z-index: 10;
+      }
 
-  .row {
-  display: flex;
-  gap: 20px;
-  animation: scroll-left 40s linear infinite;
-  align-items: center;
-  min-width: 200%; /* 重要！ */
-  box-sizing: border-box;
-}
+      .row {
+        display: flex;
+        gap: 20px;
+        animation: scroll-left 40s linear infinite;
+        align-items: center;
+        min-width: 200%;
+        box-sizing: border-box;
+      }
 
-.row img {
-  width: 65vw; /* MB版TOP画像サイズ指定 */
-  height: auto;
-  max-height: 30vh;
-  object-fit: contain;
-  max-width: 100%;
-  display: block;
-}
-
-/* PCサイズのときだけ「予約する」ボタンを大きくする */
-  .floating-btn {
-    font-size: 1.2rem;
-    padding: 16px 28px;
-    border-radius: 40px;
-  }
-}
-    
-    
+      .row img {
+        width: 65vw;
+        height: auto;
+        max-height: 30vh;
+        object-fit: contain;
+        max-width: 100%;
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
