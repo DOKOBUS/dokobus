@@ -10,18 +10,16 @@
       font-family: 'Helvetica Neue', sans-serif;
       background: #fff;
       overflow-x: hidden;
+      padding-top: 70px; /* ← 固定ナビの高さ分だけ余白 */
     }
 
     header {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
       gap: 2rem;
-      padding: 1.5rem 2rem;
+      padding: 1rem 2rem;
       background-color: white;
-      position: relative;
-      z-index: 100;
-      min-height: 70px;
+      z-index: 10;
     }
 
     .logo-bar {
@@ -36,14 +34,18 @@
     }
 
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 999;
-      background-color: white;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
       display: flex;
-      gap: 1.5rem;
-      flex-wrap: nowrap;
+      justify-content: center;
       align-items: center;
+      gap: 1.5rem;
+      padding: 0.8rem 1rem;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     nav a {
@@ -78,7 +80,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-top: 127px;
+      padding-top: 80px;
     }
 
     @keyframes bgGradient {
@@ -123,13 +125,8 @@
       align-items: center;
     }
 
-    .row.middle {
-      animation-duration: 60s;
-    }
-
-    .row.bottom {
-      animation-duration: 80s;
-    }
+    .row.middle { animation-duration: 60s; }
+    .row.bottom { animation-duration: 80s; }
 
     .row img {
       width: 15vw;
@@ -157,11 +154,11 @@
     }
 
     .lead-text {
-     font-size: 1.5rem;
-     font-weight: bold;
-     margin-top: 1rem;
-     margin-bottom: 2rem;
-     line-height: 1.6;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
     }
 
     .floating-btn {
@@ -182,67 +179,32 @@
       background-color: #005fa3;
     }
 
-    /* モバイル */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        margin: 0;
-        gap: 0rem;
-      }
-
-      .logo-bar {
-        background-color: #fff;
-        padding: 0.8rem 1rem;
-        text-align: center;
-      }
-
       nav {
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        display: flex;
-        justify-content: center;
-        background-color: #000;
         flex-wrap: wrap;
+        justify-content: center;
         padding: 0.5rem 1rem;
+        font-size: 0.8rem;
       }
 
       nav a {
-        color: #fff;
-        font-size: 0.8rem;
-        padding: 4px 6px;
+        font-size: 0.75rem;
+        padding: 4px 8px;
       }
 
       .hero {
         height: auto;
         padding-top: 100px;
         padding-bottom: 40px;
-        position: relative;
       }
 
       .hero-text {
-        position: absolute;
+        font-size: 6vw;
+        transform: none;
         top: auto;
         left: auto;
-        transform: none;
-        font-size: 7vw;
-        margin: 1rem 0;
-        color: #fff;
-        text-shadow: 0 0 10px rgba(0,0,0,0.3);
-        text-align: center;
-        font-weight: bold;
-        z-index: 10;
-      }
-
-      .row {
-        display: flex;
-        gap: 20px;
-        animation: scroll-left 40s linear infinite;
-        align-items: center;
-        min-width: 200%;
-        box-sizing: border-box;
+        margin-top: 1rem;
+        position: relative;
       }
 
       .row img {
@@ -250,66 +212,60 @@
         height: auto;
         max-height: 30vh;
         object-fit: contain;
-        max-width: 100%;
-        display: block;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- ナビゲーションを header の外に -->
+  <nav>
+    <a href="#about">DOKOBUSについて</a>
+    <a href="#service">サービス</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+
   <header>
     <div class="logo-bar">
-      <h1>DOKOBUS <span style="font-weight: normal;">2</span></h1>
+      <h1>DOKOBUS <span style="font-weight: normal;">3</span></h1>
     </div>
-    <nav>
-      <a href="#about">DOKOBUSについて</a>
-      <a href="#service">サービス</a>
-      <a href="#contact">お問い合わせ</a>
-    </nav>
   </header>
 
   <div class="hero">
     <div class="hero-text">地域と人をつなぐ新しいカタチ</div>
-
     <div class="scroll-wrapper">
-      <div class="scroll-track">
-        <div class="row">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
+      <div class="scroll-track"><div class="row">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+      </div></div>
 
-      <div class="scroll-track">
-        <div class="row middle">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
+      <div class="scroll-track"><div class="row middle">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+      </div></div>
 
-      <div class="scroll-track">
-        <div class="row bottom">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-          <img src="images/top1.PNG" alt="">
-          <img src="images/top2.PNG" alt="">
-          <img src="images/top3.PNG" alt="">
-          <img src="images/top4.PNG" alt="">
-        </div>
-      </div>
+      <div class="scroll-track"><div class="row bottom">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+        <img src="images/top1.PNG" alt="">
+        <img src="images/top2.PNG" alt="">
+        <img src="images/top3.PNG" alt="">
+        <img src="images/top4.PNG" alt="">
+      </div></div>
     </div>
   </div>
 
@@ -332,5 +288,6 @@
   </section>
 
   <a href="#contact" class="floating-btn">予約する</a>
+
 </body>
 </html>
