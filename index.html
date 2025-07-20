@@ -13,18 +13,19 @@
     }
 
     header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 2rem;
-      padding: 1rem 2rem;
-      margin: 0; /* ←ここで余白ゼロに！ */
-      background-color: #fff; /* ←白背景明示もOK */
-      z-index: 10;
-    }
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem; /* ← ここをちょっと増やす */
+  background-color: white;
+  position: relative;
+  z-index: 100;
+  min-height: 70px; /* ← 最低高さも指定 */
+}
 
     .logo-bar {
-      flex: 1;
+      flex-shrink: 0;
     }
 
     .logo-bar h1 {
@@ -171,44 +172,73 @@
 
     /* モバイル */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-      }
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+    gap: 0rem;
+  }
 
-      .logo-bar {
-        background-color: #fff;
-        padding: 0.8rem 1rem;
-      }
+  .logo-bar {
+    background-color: #fff;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
 
-      nav {
-        justify-content: center;
-        background-color: #000;
-        flex-wrap: wrap;
-        padding: 0.5rem 1rem;
-      }
+  nav {
+    justify-content: center;
+    background-color: #000;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
 
-      nav a {
-        color: #fff;
-        font-size: 0.8rem;
-        padding: 4px 6px;
-      }
+  nav a {
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
 
-      .hero {
-        height: 75vh;
-        padding-top: 127px;
-      }
+  /* 👇追加①：heroの高さを調整して余白削除 */
+  .hero {
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
 
-      .hero-text {
-        font-size: 6vw;
-      }
+  /* 👇追加②：hero-textの位置をスマホ用に修正 */
+  .hero-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    font-size: 5vw;
+    margin: 1rem 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    font-weight: bold;
+  }
 
-      .row img {
-        width: 38vw;
-        max-height: none;
-      }
+  .row {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 40s linear infinite;
+  align-items: center;
+  min-width: 200%; /* ← これが重要！ */
+  box-sizing: border-box;
+}
+
+.row img {
+  width: 15vw;
+  height: auto;
+  max-height: 30vh;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
     }
+    
   </style>
 </head>
 <body>
