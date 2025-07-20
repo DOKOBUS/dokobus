@@ -204,20 +204,22 @@
     height: auto;
     padding-top: 100px;
     padding-bottom: 40px;
+    position: relative;
   }
 
   /* 追加②：hero-textの位置をスマホ用に修正 */
   .hero-text {
-    position: relative;
+    position: absolute;
     top: auto;
     left: auto;
     transform: none;
-    font-size: 5vw;
+    font-size: 8vw;
     margin: 1rem 0;
     color: #fff;
     text-shadow: 0 0 10px rgba(0,0,0,0.3);
     text-align: center;
     font-weight: bold;
+    z-index: 10;
   }
 
   .row {
